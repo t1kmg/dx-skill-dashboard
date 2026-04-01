@@ -1,0 +1,16 @@
+# 個人資料・教材
+AIマスター/
+*.pdf
+
+# 旧ツール（統合済み）
+情報処理安全確保支援士/
+
+# Claude Code 一時ファイル
+*.resolved
+*.resolved.*
+*.metadata.json
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
