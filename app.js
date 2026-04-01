@@ -171,6 +171,220 @@ window.uncompleteTask = function(taskId) {
   showToast('チェックを外しました', false);
 };
 
+// ===== #1 試験日カウントダウン＋週次ペース =====
+function renderCountdown() {
+  const container = document.getElementById('exam-countdown');
+  if (!container) return;
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  container.innerHTML = CERTIFICATIONS.map(cert => {
+    const allTasks  = cert.phases.flatMap(p => p.topics.flatMap(t => t.tasks));
+    const remaining = allTasks.filter(t => !isDone(t.id)).length;
+    const target    = new Date(cert.targetDate + '-01');
+    target.setMonth(target.getMonth() + 1); target.setDate(0);
+    const daysLeft  = Math.max(0, Math.ceil((target - today) / 86400000));
+    const weeksLeft = Math.max(1, Math.ceil(daysLeft / 7));
+    const perWeek   = remaining > 0 ? Math.ceil(remaining / weeksLeft) : 0;
+    const warn      = daysLeft < 30 ? 'countdown-warn' : '';
+    return `
+      <div class="countdown-item">
+        <span class="countdown-icon" style="color:${cert.color}">${cert.icon}</span>
+        <div class="countdown-body">
+          <div class="countdown-name" style="color:${cert.color}">${cert.name}</div>
+          <div class="countdown-nums">
+            <span class="${warn}"><strong>${daysLeft}</strong>日</span>
+            <span>残り<strong>${remaining}</strong>タスク</span>
+            <span>週<strong>${perWeek}</strong>必要</span>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ===== #3 学習カレンダー（草グラフ） =====
+function renderActivityCalendar() {
+  const container = document.getElementById('activity-calendar');
+  if (!container) return;
+
+  const dateCounts = {};
+  Object.values(state.progress).forEach(v => {
+    if (v && v.done && v.completedAt) {
+      const d = new Date(v.completedAt);
+      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      dateCounts[key] = (dateCounts[key] || 0) + 1;
+    }
+  });
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const WEEKS = 16;
+  const start = new Date(today);
+  start.setDate(start.getDate() - WEEKS * 7 + 1);
+  start.setDate(start.getDate() - start.getDay()); // align to Sunday
+
+  const cells = [];
+  const cur = new Date(start);
+  while (cur <= today) {
+    const key = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`;
+    cells.push({ key, count: dateCounts[key] || 0, future: cur > today });
+    cur.setDate(cur.getDate() + 1);
+  }
+
+  const weekGroups = [];
+  for (let i = 0; i < cells.length; i += 7) weekGroups.push(cells.slice(i, i + 7));
+  const level = n => n === 0 ? 0 : n <= 1 ? 1 : n <= 3 ? 2 : n <= 5 ? 3 : 4;
+
+  // Month labels
+  let lastM = -1;
+  const monthSpans = weekGroups.map((wk, wi) => {
+    const m = new Date(wk[0].key).getMonth();
+    if (m !== lastM) { lastM = m; return `<span style="grid-column:${wi+1}">${m+1}月</span>`; }
+    return '';
+  }).join('');
+
+  const totalDays = Object.keys(dateCounts).length;
+
+  container.innerHTML = `
+    <div class="cal-wrap">
+      <div class="cal-months" style="grid-template-columns:repeat(${WEEKS},14px)">${monthSpans}</div>
+      <div class="cal-grid">
+        ${weekGroups.map(wk => `<div class="cal-week">${wk.map(c =>
+          `<div class="cal-cell level-${c.future ? 'future' : level(c.count)}" title="${c.key}${c.count ? ` (${c.count}タスク)` : ''}"></div>`
+        ).join('')}</div>`).join('')}
+      </div>
+      <div class="cal-legend">
+        <span>${totalDays}日間学習</span>
+        <div class="cal-legend-cells">
+          <span>少</span>
+          ${[0,1,2,3,4].map(l => `<div class="cal-cell level-${l}"></div>`).join('')}
+          <span>多</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ===== #2 ポモドーロタイマー =====
+const POMO_WORK  = 25 * 60;
+const POMO_BREAK =  5 * 60;
+let pomoState = { running: false, seconds: POMO_WORK, mode: 'work', interval: null };
+
+function initPomodoro() {
+  const fab       = document.getElementById('pomo-fab');
+  const widget    = document.getElementById('pomodoro');
+  const toggleBtn = document.getElementById('pomo-toggle');
+  const resetBtn  = document.getElementById('pomo-reset');
+  const closeBtn  = document.getElementById('pomo-close');
+  if (!fab) return;
+
+  fab.addEventListener('click', () => widget.classList.toggle('show'));
+  closeBtn.addEventListener('click', () => widget.classList.remove('show'));
+
+  toggleBtn.addEventListener('click', () => {
+    if (pomoState.running) {
+      clearInterval(pomoState.interval);
+      pomoState.running = false;
+      toggleBtn.textContent = '▶ 再開';
+      widget.classList.remove('pomo-running', 'pomo-break');
+    } else {
+      pomoState.running = true;
+      toggleBtn.textContent = '⏸ 停止';
+      widget.classList.add(pomoState.mode === 'work' ? 'pomo-running' : 'pomo-break');
+      pomoState.interval = setInterval(() => {
+        pomoState.seconds--;
+        updatePomoDisplay();
+        if (pomoState.seconds <= 0) {
+          clearInterval(pomoState.interval);
+          pomoState.running = false;
+          widget.classList.remove('pomo-running', 'pomo-break');
+          toggleBtn.textContent = '▶ 開始';
+          if (pomoState.mode === 'work') {
+            pomoState.mode = 'break'; pomoState.seconds = POMO_BREAK;
+            showToast('🍅 25分完了！5分休憩しましょう', false);
+          } else {
+            pomoState.mode = 'work'; pomoState.seconds = POMO_WORK;
+            showToast('☕ 休憩終了！次のセッションを始めましょう', false);
+          }
+          updatePomoDisplay();
+        }
+      }, 1000);
+    }
+  });
+
+  resetBtn.addEventListener('click', () => {
+    clearInterval(pomoState.interval);
+    pomoState = { running: false, seconds: POMO_WORK, mode: 'work', interval: null };
+    widget.classList.remove('pomo-running', 'pomo-break');
+    toggleBtn.textContent = '▶ 開始';
+    updatePomoDisplay();
+  });
+
+  updatePomoDisplay();
+}
+
+function updatePomoDisplay() {
+  const m = Math.floor(pomoState.seconds / 60);
+  const s = pomoState.seconds % 60;
+  const t = document.getElementById('pomo-time');
+  const md = document.getElementById('pomo-mode');
+  if (t)  t.textContent  = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  if (md) md.textContent = pomoState.mode === 'work' ? '🍅 集中' : '☕ 休憩';
+}
+
+// ===== #4 タスク理解度評価（完了ログ内） =====
+window.saveRating = function(taskId, rating) {
+  if (!state.progress[taskId]) return;
+  state.progress[taskId].rating = state.progress[taskId].rating === rating ? null : rating;
+  saveState();
+  renderCompletedLog();
+};
+
+// ===== #5 通知 =====
+function initNotification() {
+  if (!('Notification' in window)) return;
+  const banner    = document.getElementById('notif-banner');
+  const allowBtn  = document.getElementById('notif-allow');
+  const dismissBtn = document.getElementById('notif-dismiss');
+  if (!banner) return;
+
+  const dismissed = localStorage.getItem('notif_dismissed');
+  if (Notification.permission === 'granted') {
+    scheduleNotificationCheck();
+    return;
+  }
+  if (Notification.permission !== 'denied' && !dismissed) {
+    banner.style.display = 'flex';
+  }
+  allowBtn && allowBtn.addEventListener('click', () => {
+    Notification.requestPermission().then(perm => {
+      banner.style.display = 'none';
+      if (perm === 'granted') scheduleNotificationCheck();
+    });
+  });
+  dismissBtn && dismissBtn.addEventListener('click', () => {
+    banner.style.display = 'none';
+    localStorage.setItem('notif_dismissed', '1');
+  });
+}
+
+function scheduleNotificationCheck() {
+  checkDailyNotification();
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) checkDailyNotification();
+  });
+}
+
+function checkDailyNotification() {
+  if (Notification.permission !== 'granted') return;
+  const today = new Date().toDateString();
+  if (state.lastStudyDate === today) return;
+  const hour = new Date().getHours();
+  if (hour >= 18) {
+    new Notification('DX学習リマインダー 📚', {
+      body: '今日の学習がまだです！少しだけ進めましょう。',
+      icon: './icon-192.png',
+    });
+  }
+}
+
 // ===== エクスポート =====
 window.exportState = function() {
   const json = JSON.stringify(state, null, 2);
@@ -361,6 +575,9 @@ function renderCompletedLog() {
               <div class="log-item-date">✅ ${fmtDate(e.completedAt)}</div>
             </div>
           </div>
+          <div class="log-rating">
+            ${[1,2,3,4,5].map(v => `<button class="star-btn ${(e.rating||0) >= v ? 'active' : ''}" onclick="saveRating('${e.taskId}',${v})" title="${v}★">★</button>`).join('')}
+          </div>
           <button class="log-undo-btn" onclick="uncompleteTask('${e.taskId}')" title="チェックを外す">↩</button>
         </div>`).join('')}
     </div>`;
@@ -521,8 +738,10 @@ function renderHero(stats) {
 // ===== まとめて再描画 =====
 function renderAll(stats) {
   renderHero(stats);
+  renderCountdown();
   renderCertCards(stats.certProgress);
   renderRoadmap(stats.certProgress);
+  renderActivityCalendar();
   renderTodayTasks();
   renderCompletedLog();
   renderBadges();
@@ -599,6 +818,9 @@ function init() {
       e.target.value = ''; // 同一ファイルの再選択を可能に
     });
   }
+
+  initPomodoro();
+  initNotification();
 
   const stats = calcStats();
   renderAll(stats);

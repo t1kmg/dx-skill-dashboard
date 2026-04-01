@@ -63,6 +63,7 @@
           </div>
           <div class="xp-bar"><div class="xp-fill" id="dash-xp-bar"></div></div>
         </div>
+        <div id="exam-countdown" class="exam-countdown"></div>
       </section>
 
       <!-- 資格カード -->
@@ -75,6 +76,12 @@
       <section class="section">
         <h2 class="section-title">学習ロードマップ（2026〜2027）</h2>
         <div class="roadmap-wrap" id="roadmap"></div>
+      </section>
+
+      <!-- 学習カレンダー -->
+      <section class="section">
+        <h2 class="section-title">学習カレンダー <span class="badge-label">過去16週</span></h2>
+        <div id="activity-calendar"></div>
       </section>
 
       <!-- 今日のタスク -->
@@ -114,6 +121,27 @@
     </div>
 
   </main>
+
+  <!-- ポモドーロタイマー -->
+  <div class="pomodoro" id="pomodoro">
+    <div class="pomo-header">
+      <span id="pomo-mode">🍅 集中</span>
+      <button class="pomo-close-btn" id="pomo-close">×</button>
+    </div>
+    <div class="pomo-time" id="pomo-time">25:00</div>
+    <div class="pomo-controls">
+      <button class="pomo-btn pomo-primary" id="pomo-toggle">▶ 開始</button>
+      <button class="pomo-btn" id="pomo-reset">↺</button>
+    </div>
+  </div>
+  <button class="pomo-fab" id="pomo-fab" title="ポモドーロタイマー">🍅</button>
+
+  <!-- 通知バナー -->
+  <div id="notif-banner" class="notif-banner" style="display:none">
+    <span>🔔 毎日の学習リマインダーを受け取りますか？</span>
+    <button class="outline-btn" id="notif-allow">許可する</button>
+    <button class="pomo-close-btn" id="notif-dismiss">×</button>
+  </div>
 
   <!-- 取り消しトースト -->
   <div class="toast" id="toast">
