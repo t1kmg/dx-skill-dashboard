@@ -11,6 +11,9 @@ AIマスター/
 *.metadata.json
 .claude/
 
+# 参考資料（スクリーンショット等）
+Refs/
+
 # OS
 .DS_Store
 Thumbs.db
