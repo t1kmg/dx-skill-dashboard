@@ -56,6 +56,11 @@ body {
 .nav-tab.active, .nav-tab:hover { background: rgba(255,255,255,0.1); color: var(--text); }
 .nav-tab.active { background: rgba(129,140,248,0.2); color: var(--accent); }
 
+.sync-status { font-size: 0.7rem; color: var(--text2); flex-shrink: 0; white-space: nowrap; transition: color 0.3s; }
+.sync-status.syncing { color: var(--warn); }
+.sync-status.ok      { color: var(--success); }
+.sync-status.error   { color: var(--danger); }
+
 .nav-xp { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .xp-level { font-size: 0.8rem; font-weight: 700; color: var(--warn); white-space: nowrap; }
 .xp-bar-mini { width: 60px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }

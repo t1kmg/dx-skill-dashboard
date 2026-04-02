@@ -1,5 +1,75 @@
 // app.js — DXスキル学習ダッシュボード メインロジック
 
+// ===== Supabase 設定 =====
+const SUPABASE_URL = 'https://cobfrvnthgkweplhpkeu.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvYmZydm50aGdrd2VwbGhwa2V1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMzMzNjcsImV4cCI6MjA5MDcwOTM2N30.ydN2TXYS7zxQZdc9S2DzTrIx_JmpaYzUgdgWuW4YTBU';
+const SYNC_USER_ID = 'masaki';
+let sbClient = null;
+let syncTimer = null;
+
+function initSupabase() {
+  try {
+    sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  } catch(e) {
+    console.warn('Supabase init failed', e);
+  }
+}
+
+function setSyncStatus(status) {
+  const el = document.getElementById('sync-status');
+  if (!el) return;
+  el.className = 'sync-status ' + status;
+  const map = { syncing: '🔄 同期中', ok: '✅ 同期済み', error: '⚠️ オフライン' };
+  el.textContent = map[status] || '';
+}
+
+async function syncToSupabase() {
+  if (!sbClient) return;
+  setSyncStatus('syncing');
+  try {
+    const { error } = await sbClient.from('progress').upsert({
+      id: SYNC_USER_ID,
+      data: state,
+      updated_at: new Date().toISOString()
+    });
+    if (error) throw error;
+    setSyncStatus('ok');
+  } catch(e) {
+    console.warn('Sync to Supabase failed', e);
+    setSyncStatus('error');
+  }
+}
+
+async function syncFromSupabase() {
+  if (!sbClient) return;
+  setSyncStatus('syncing');
+  try {
+    const { data, error } = await sbClient.from('progress').select('*').eq('id', SYNC_USER_ID).single();
+    if (error && error.code !== 'PGRST116') throw error;
+    if (data && data.data) {
+      const remoteTime = new Date(data.updated_at).getTime();
+      const localTime  = state.updatedAt ? new Date(state.updatedAt).getTime() : 0;
+      if (remoteTime > localTime) {
+        state = { ...data.data };
+        if (!state.flashcards) state.flashcards = {};
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        const stats = calcStats();
+        renderAll(stats);
+        showToast('☁️ クラウドから最新データを取得しました', false);
+      }
+    }
+    setSyncStatus('ok');
+  } catch(e) {
+    console.warn('Sync from Supabase failed', e);
+    setSyncStatus('error');
+  }
+}
+
+function debouncedSync() {
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(syncToSupabase, 1500);
+}
+
 // ===== ストレージキー =====
 const STORAGE_KEY = 'dx_skill_tracker_v2';
 
@@ -56,7 +126,9 @@ function loadState() {
 }
 
 function saveState() {
+  state.updatedAt = new Date().toISOString();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  debouncedSync();
 }
 
 function isDone(taskId) {
@@ -931,6 +1003,12 @@ function init() {
   initPomodoro();
   initNotification();
   initFlashcards();
+
+  const syncBtn = document.getElementById('sync-btn');
+  if (syncBtn) syncBtn.addEventListener('click', syncToSupabase);
+
+  initSupabase();
+  syncFromSupabase();
 
   const stats = calcStats();
   renderAll(stats);

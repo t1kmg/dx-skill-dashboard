@@ -25,6 +25,7 @@
       <button class="nav-tab" data-view="cert-sc">SC試験</button>
       <button class="nav-tab" data-view="flashcard">カード</button>
     </div>
+    <div id="sync-status" class="sync-status"></div>
     <div class="nav-xp" id="nav-xp">
       <span class="xp-level" id="nav-level">Lv.1</span>
       <div class="xp-bar-mini"><div class="xp-fill-mini" id="nav-xp-fill"></div></div>
@@ -96,6 +97,7 @@
         <div class="section-header-row">
           <h2 class="section-title">完了済みタスク一覧</h2>
           <div class="btn-group">
+            <button class="outline-btn" id="sync-btn">☁️ 今すぐ同期</button>
             <button class="outline-btn" id="export-btn">📤 エクスポート</button>
             <button class="outline-btn" id="import-btn">📥 インポート</button>
             <button class="outline-btn danger-outline" id="reset-btn">🗑 リセット</button>
@@ -164,6 +166,7 @@
     <button class="toast-undo-btn" id="toast-undo" style="display:none">↩ 取り消し</button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
