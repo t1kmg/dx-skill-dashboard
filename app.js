@@ -52,7 +52,7 @@ function loadState() {
       return parsed;
     }
   } catch(e) {}
-  return { progress: {}, lastStudyDate: null, streak: 0, unlockedBadges: [] };
+  return { progress: {}, lastStudyDate: null, streak: 0, unlockedBadges: [], flashcards: {} };
 }
 
 function saveState() {
@@ -384,6 +384,115 @@ function checkDailyNotification() {
     });
   }
 }
+
+// ===== #7 フラッシュカード =====
+let fcSession = { deck: [], index: 0, filter: 'all', flipped: false, sessionCorrect: 0, sessionTotal: 0 };
+
+function initFlashcards() {
+  if (!state.flashcards) state.flashcards = {};
+
+  document.querySelectorAll('.fc-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.fc-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      fcStartSession(btn.dataset.filter);
+    });
+  });
+
+  fcStartSession('all');
+}
+
+function fcBuildDeck(filter) {
+  let cards = FLASHCARDS;
+  if (filter !== 'all') cards = cards.filter(c => c.cert === filter);
+
+  // 苦手（incorrect > correct）のカードを優先、同スコア内はランダム
+  return [...cards].sort((a, b) => {
+    const sa = state.flashcards[a.id] || { correct: 0, incorrect: 0 };
+    const sb = state.flashcards[b.id] || { correct: 0, incorrect: 0 };
+    const wa = sa.incorrect - sa.correct;
+    const wb = sb.incorrect - sb.correct;
+    if (wa !== wb) return wb - wa;
+    return Math.random() - 0.5;
+  });
+}
+
+function fcStartSession(filter) {
+  fcSession = { deck: fcBuildDeck(filter), index: 0, filter, flipped: false, sessionCorrect: 0, sessionTotal: 0 };
+  fcRender();
+}
+
+function fcRender() {
+  const container = document.getElementById('fc-area');
+  if (!container) return;
+
+  if (fcSession.deck.length === 0) {
+    container.innerHTML = `<div class="fc-empty">カードがありません</div>`;
+    return;
+  }
+
+  if (fcSession.index >= fcSession.deck.length) {
+    const pct = fcSession.sessionTotal > 0 ? Math.round(fcSession.sessionCorrect / fcSession.sessionTotal * 100) : 0;
+    const xpGained = fcSession.sessionCorrect * 5;
+    container.innerHTML = `
+      <div class="fc-complete">
+        <div class="fc-complete-icon">🎉</div>
+        <div class="fc-complete-title">セッション完了！</div>
+        <div class="fc-complete-stats">${fcSession.sessionCorrect} / ${fcSession.sessionTotal} 正解（${pct}%）</div>
+        <div class="fc-complete-xp">+${xpGained} XP</div>
+        <button class="primary-btn" onclick="fcStartSession('${fcSession.filter}')">もう一度</button>
+      </div>`;
+    return;
+  }
+
+  const card = fcSession.deck[fcSession.index];
+  const stats = state.flashcards[card.id] || { correct: 0, incorrect: 0 };
+  const certColor = card.cert === 'g-ken' ? 'var(--g-color)' : 'var(--sc-color)';
+  const pct = Math.round(fcSession.index / fcSession.deck.length * 100);
+
+  container.innerHTML = `
+    <div class="fc-progress-wrap">
+      <div class="fc-progress-text">${fcSession.index + 1} / ${fcSession.deck.length}</div>
+      <div class="fc-progress-bar"><div class="fc-progress-fill" style="width:${pct}%"></div></div>
+      <div class="fc-session-score">✓ ${fcSession.sessionCorrect}</div>
+    </div>
+    <div class="fc-card${fcSession.flipped ? ' flipped' : ''}" onclick="fcFlip()">
+      <div class="fc-card-inner">
+        <div class="fc-front">
+          <div class="fc-cert-label" style="color:${certColor}">${card.certLabel}</div>
+          <div class="fc-term">${card.term}</div>
+          <div class="fc-hint">タップして答えを見る</div>
+        </div>
+        <div class="fc-back">
+          <div class="fc-cert-label" style="color:${certColor}">${card.certLabel}</div>
+          <div class="fc-definition">${card.definition}</div>
+          <div class="fc-card-stats">正解 ${stats.correct}回 ／ 不正解 ${stats.incorrect}回</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-answer-btns${fcSession.flipped ? '' : ' fc-answer-hidden'}">
+      <button class="fc-btn fc-incorrect" onclick="fcAnswer(false)" ${fcSession.flipped ? '' : 'disabled'}>✗ もう一度</button>
+      <button class="fc-btn fc-correct" onclick="fcAnswer(true)" ${fcSession.flipped ? '' : 'disabled'}>✓ 覚えた</button>
+    </div>`;
+}
+
+window.fcFlip = function() {
+  if (fcSession.flipped) return;
+  fcSession.flipped = true;
+  fcRender();
+};
+
+window.fcAnswer = function(correct) {
+  const card = fcSession.deck[fcSession.index];
+  if (!state.flashcards[card.id]) state.flashcards[card.id] = { correct: 0, incorrect: 0 };
+  if (correct) { state.flashcards[card.id].correct++; fcSession.sessionCorrect++; }
+  else         { state.flashcards[card.id].incorrect++; }
+  fcSession.sessionTotal++;
+  fcSession.index++;
+  fcSession.flipped = false;
+  saveState();
+  fcRender();
+};
 
 // ===== エクスポート =====
 window.exportState = function() {
@@ -821,6 +930,7 @@ function init() {
 
   initPomodoro();
   initNotification();
+  initFlashcards();
 
   const stats = calcStats();
   renderAll(stats);

@@ -23,6 +23,7 @@
       <button class="nav-tab active" data-view="dashboard">ダッシュボード</button>
       <button class="nav-tab" data-view="cert-g-ken">G検定</button>
       <button class="nav-tab" data-view="cert-sc">SC試験</button>
+      <button class="nav-tab" data-view="flashcard">カード</button>
     </div>
     <div class="nav-xp" id="nav-xp">
       <span class="xp-level" id="nav-level">Lv.1</span>
@@ -118,6 +119,20 @@
     </div>
     <div id="view-cert-sc" class="view">
       <div id="cert-detail-sc"></div>
+    </div>
+
+    <!-- ===== フラッシュカード ===== -->
+    <div id="view-flashcard" class="view">
+      <div class="fc-header">
+        <h2 class="section-title" style="margin-bottom:0">フラッシュカード</h2>
+        <p class="fc-subtitle">タップでめくる。苦手カードが優先表示されます。</p>
+      </div>
+      <div class="fc-filter-wrap">
+        <button class="fc-filter-btn active" data-filter="all">全て（40枚）</button>
+        <button class="fc-filter-btn" data-filter="g-ken">🤖 G検定（20枚）</button>
+        <button class="fc-filter-btn" data-filter="sc">🔐 SC試験（20枚）</button>
+      </div>
+      <div id="fc-area"></div>
     </div>
 
   </main>

@@ -261,6 +261,52 @@ const CERTIFICATIONS = [
   }
 ];
 
+// ===== フラッシュカード定義 =====
+const FLASHCARDS = [
+  // G検定
+  { id: 'fc-g-01', cert: 'g-ken', certLabel: 'G検定', term: '教師あり学習', definition: 'ラベル付きデータ（正解）を使ってモデルを学習する手法。分類・回帰問題に使用。例：スパムフィルタ・住宅価格予測。' },
+  { id: 'fc-g-02', cert: 'g-ken', certLabel: 'G検定', term: '教師なし学習', definition: 'ラベルなしデータからパターンや構造を自律的に発見する手法。クラスタリング・次元削減・密度推定など。' },
+  { id: 'fc-g-03', cert: 'g-ken', certLabel: 'G検定', term: '強化学習', definition: 'エージェントが環境と試行錯誤しながら報酬を最大化する行動を学ぶ手法。囲碁AI（AlphaGo）やゲームAIで活用。' },
+  { id: 'fc-g-04', cert: 'g-ken', certLabel: 'G検定', term: '誤差逆伝播法（バックプロパゲーション）', definition: 'NNの損失を出力層から入力層方向へ微分の連鎖律（chain rule）で伝播させ、各重みを更新するアルゴリズム。' },
+  { id: 'fc-g-05', cert: 'g-ken', certLabel: 'G検定', term: 'ReLU（Rectified Linear Unit）', definition: '活性化関数の一種。f(x) = max(0, x)。負の値を0に切り捨て、勾配消失問題を軽減する。現在最も広く使われる。' },
+  { id: 'fc-g-06', cert: 'g-ken', certLabel: 'G検定', term: '過学習（オーバーフィッティング）', definition: '訓練データに過度に適合し、未知データへの汎化性能が低下する問題。ドロップアウト・正則化・データ拡張で対策。' },
+  { id: 'fc-g-07', cert: 'g-ken', certLabel: 'G検定', term: 'ドロップアウト', definition: '学習中にランダムにニューロンを無効化する正則化手法。過学習を防ぎ、アンサンブル効果も得られる。' },
+  { id: 'fc-g-08', cert: 'g-ken', certLabel: 'G検定', term: 'CNN（畳み込みニューラルネットワーク）', definition: '画像認識に特化したNN。畳み込み層（特徴抽出）＋プーリング層（ダウンサンプリング）で空間的な特徴を学習する。' },
+  { id: 'fc-g-09', cert: 'g-ken', certLabel: 'G検定', term: 'Transformer', definition: 'Self-Attention機構のみで構成されるDLアーキテクチャ（2017年Vaswaniら提案）。BERTやGPTの基盤。RNNより並列処理が得意。' },
+  { id: 'fc-g-10', cert: 'g-ken', certLabel: 'G検定', term: '転移学習（Transfer Learning）', definition: '大規模データで学習済みのモデルを、別の（少データ）タスクに応用する手法。事前学習＋ファインチューニングが典型。' },
+  { id: 'fc-g-11', cert: 'g-ken', certLabel: 'G検定', term: 'シンギュラリティ（技術的特異点）', definition: 'AIが人類の知能を超え、技術進歩が加速度的になるとされる転換点。レイ・カーツワイルが2045年頃と予測。' },
+  { id: 'fc-g-12', cert: 'g-ken', certLabel: 'G検定', term: 'ベイズ推定', definition: '事前確率に観測データを加えてベイズの定理で事後確率を更新する確率的推論。P(A|B) = P(B|A)P(A)/P(B)。' },
+  { id: 'fc-g-13', cert: 'g-ken', certLabel: 'G検定', term: 'GAN（敵対的生成ネットワーク）', definition: '生成器（Generator）と識別器（Discriminator）が競い合い、本物そっくりのデータを生成するモデル。画像生成などに活用。' },
+  { id: 'fc-g-14', cert: 'g-ken', certLabel: 'G検定', term: 'BERT', definition: 'GoogleのBidirectional Encoder Representations from Transformers。文章を両方向から理解するTransformerモデル。事前学習＋FTで多タスク対応。' },
+  { id: 'fc-g-15', cert: 'g-ken', certLabel: 'G検定', term: '損失関数（Loss Function）', definition: 'モデルの予測値と正解の誤差を定量化する関数。分類には交差エントロピー、回帰にはMSE（平均二乗誤差）が一般的。' },
+  { id: 'fc-g-16', cert: 'g-ken', certLabel: 'G検定', term: '勾配消失問題', definition: 'DNN学習時、誤差逆伝播で入力層に近づくほど勾配が0に近づく問題。ReLUや残差接続（ResNet）で対策。' },
+  { id: 'fc-g-17', cert: 'g-ken', certLabel: 'G検定', term: 'Attention機構', definition: 'シーケンス内の各要素が他の要素とどれだけ関連するかを重み付けする仕組み。Transformerの中核。' },
+  { id: 'fc-g-18', cert: 'g-ken', certLabel: 'G検定', term: '正規分布（ガウス分布）', definition: '平均μと分散σ²で定まる釣り鐘型の確率分布。機械学習での誤差分布の仮定や初期化などで広く登場。' },
+  { id: 'fc-g-19', cert: 'g-ken', certLabel: 'G検定', term: 'ファインチューニング', definition: '大規模データで事前学習したモデルを、少量のタスク固有データで追加学習する転移学習の手法。' },
+  { id: 'fc-g-20', cert: 'g-ken', certLabel: 'G検定', term: 'ハイパーパラメータ', definition: '学習前に人手で設定するパラメータ。学習率・バッチサイズ・層数・ドロップアウト率など。グリッドサーチや自動探索で最適化。' },
+  // SC試験
+  { id: 'fc-s-01', cert: 'sc', certLabel: 'SC試験', term: 'SQLインジェクション', definition: 'ユーザー入力にSQL文を埋め込み、DBを不正操作する攻撃。対策：プリペアドステートメント・入力値のサニタイジング。' },
+  { id: 'fc-s-02', cert: 'sc', certLabel: 'SC試験', term: 'XSS（クロスサイトスクリプティング）', definition: '悪意あるスクリプトをWebページに埋め込み、閲覧者のブラウザで実行させる攻撃。対策：出力エスケープ・CSP。' },
+  { id: 'fc-s-03', cert: 'sc', certLabel: 'SC試験', term: 'CSRF（クロスサイトリクエストフォージェリ）', definition: '認証済みユーザーに意図しないHTTPリクエストを送らせる攻撃。対策：トークン検証・SameSite Cookie。' },
+  { id: 'fc-s-04', cert: 'sc', certLabel: 'SC試験', term: '公開鍵暗号（非対称暗号）', definition: '暗号化に公開鍵、復号に秘密鍵を使う方式。例：RSA。鍵配送問題を解決するが処理速度は共通鍵より遅い。' },
+  { id: 'fc-s-05', cert: 'sc', certLabel: 'SC試験', term: 'デジタル署名', definition: '送信者が秘密鍵でハッシュ値を暗号化し、受信者が公開鍵で検証する仕組み。なりすまし・改ざん・否認防止に効果。' },
+  { id: 'fc-s-06', cert: 'sc', certLabel: 'SC試験', term: 'PKI（公開鍵基盤）', definition: '認証局（CA）が公開鍵証明書を発行・管理する仕組み。X.509証明書でHTTPS通信の安全性を担保する。' },
+  { id: 'fc-s-07', cert: 'sc', certLabel: 'SC試験', term: 'ランサムウェア', definition: 'ファイルを暗号化して身代金（ransom）を要求するマルウェア。対策：バックアップ・EDR・メール訓練。' },
+  { id: 'fc-s-08', cert: 'sc', certLabel: 'SC試験', term: 'ISMS（情報セキュリティマネジメントシステム）', definition: 'ISO/IEC 27001に基づく情報セキュリティ管理の枠組み。PDCAサイクルでリスクを継続的に管理する。' },
+  { id: 'fc-s-09', cert: 'sc', certLabel: 'SC試験', term: 'リスクアセスメント', definition: '脅威・脆弱性・影響度を評価し、リスクを特定・分析・評価するプロセス。ISMSの中核。結果に応じてリスク対応策を選択。' },
+  { id: 'fc-s-10', cert: 'sc', certLabel: 'SC試験', term: 'ゼロトラスト', definition: '「内部ネットワークも信頼しない」前提で全アクセスを検証するセキュリティモデル。VPN依存からの脱却として注目。' },
+  { id: 'fc-s-11', cert: 'sc', certLabel: 'SC試験', term: 'CSIRT', definition: 'Computer Security Incident Response Team。セキュリティインシデントに対応する専門チーム。社内CSIRT設置が推奨される。' },
+  { id: 'fc-s-12', cert: 'sc', certLabel: 'SC試験', term: 'WAF（Webアプリケーションファイアウォール）', definition: 'WebアプリへのHTTPリクエストを監視・フィルタリングしてSQLiやXSS等の攻撃を遮断する装置。' },
+  { id: 'fc-s-13', cert: 'sc', certLabel: 'SC試験', term: '多要素認証（MFA）', definition: 'パスワード（知識）＋スマホ（所持）＋生体認証（生体）など複数の要素を組み合わせる認証方式。不正ログイン対策に有効。' },
+  { id: 'fc-s-14', cert: 'sc', certLabel: 'SC試験', term: 'フィッシング攻撃', definition: '正規サービスを装った偽サイト・メールで認証情報を詐取する攻撃。スピアフィッシングは特定組織を狙う標的型。' },
+  { id: 'fc-s-15', cert: 'sc', certLabel: 'SC試験', term: 'ソーシャルエンジニアリング', definition: '技術ではなく人間の心理・行動を利用して情報を不正入手する手法。なりすまし・口実作り・プリテキスティングなど。' },
+  { id: 'fc-s-16', cert: 'sc', certLabel: 'SC試験', term: 'DDoS攻撃', definition: '複数の踏み台（ボットネット）から大量のリクエストを送りサービスを停止させる攻撃。DoSの分散型（Distributed）版。' },
+  { id: 'fc-s-17', cert: 'sc', certLabel: 'SC試験', term: 'ペネトレーションテスト', definition: 'システムへの擬似攻撃を実施し、実際に侵入できるかを検証するセキュリティテスト。脆弱性診断より踏み込んだ評価。' },
+  { id: 'fc-s-18', cert: 'sc', certLabel: 'SC試験', term: '不正アクセス禁止法', definition: 'アクセス権限なしにコンピュータにアクセスすることを禁じた日本の法律（正式名：不正アクセス行為の禁止等に関する法律）。' },
+  { id: 'fc-s-19', cert: 'sc', certLabel: 'SC試験', term: 'TLS（Transport Layer Security）', definition: '通信の暗号化・認証・完全性保護を提供するプロトコル。HTTPSはHTTP over TLS。SSLの後継。現行はTLS 1.3。' },
+  { id: 'fc-s-20', cert: 'sc', certLabel: 'SC試験', term: 'インシデントレスポンス', definition: 'セキュリティインシデント発生時の対応手順。検知→封じ込め→根絶→復旧→事後分析の流れで対処する。' },
+];
+
 // ロードマップ（全体タイムライン）
 const ROADMAP = [
   { certId: 'g-ken', label: 'G検定',  startMonth: '2026-04', endMonth: '2026-07', milestone: '2026年7月 受験' },
