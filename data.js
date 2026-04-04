@@ -8,19 +8,19 @@ const CERTIFICATIONS = [
     category: 'AI',
     icon: '🤖',
     color: '#818cf8',
-    targetDate: '2026-07',
-    targetLabel: '2026年7月 受験目標',
-    examInfo: '年3回（3月・7月・11月）｜オンライン｜120分・多肢選択｜合格率約30〜40%',
+    targetDate: '2026-05',
+    targetLabel: '2026年5月9日 受験（オンライン）',
+    examInfo: '年複数回実施｜オンライン｜120分・多肢選択｜合格率約30〜40%｜次回：2026年5月9日（申込済）',
     passCriteria: '正答率約65%以上',
     studyHours: 100,
     phases: [
       {
         id: 'g-p1',
         title: 'Phase 1：AI概論・機械学習',
-        range: '1〜3週（4/6〜4/26）',
+        range: '1〜3週（4/6〜4/11）— 白本2周目（1周目完了済み）',
         topics: [
           {
-            id: 'g-p1-t1', title: 'Week 1：人工知能とは・AIをめぐる動向（第1〜4回）',
+            id: 'g-p1-t1', title: 'Week 1：人工知能とは・AIをめぐる動向（第1〜4回）【白本1周目完了済み✓】',
             tasks: [
               { id: 'g-p1-t1-v1', type: 'video', label: '動画：第1回 人工知能の定義・研究の歴史・第1〜3次AIブーム', link: 'https://www.youtube.com/watch?v=z8N7Y_hztHY&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
               { id: 'g-p1-t1-v2', type: 'video', label: '動画：第2〜3回 探索・推論・知識表現・エキスパートシステム', link: 'https://www.youtube.com/watch?v=9VCZmCKGjQk&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
@@ -30,7 +30,7 @@ const CERTIFICATIONS = [
             ]
           },
           {
-            id: 'g-p1-t2', title: 'Week 2：機械学習の概要（第5〜7回）',
+            id: 'g-p1-t2', title: 'Week 2：機械学習の概要（第5〜7回）【白本1周目完了済み✓】',
             tasks: [
               { id: 'g-p1-t2-v1', type: 'video', label: '動画：第5回 教師あり学習（回帰・分類・決定木・SVM・k近傍法）', link: 'https://www.youtube.com/watch?v=kBfl8Tr8VtA&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
               { id: 'g-p1-t2-v2', type: 'video', label: '動画：第6〜7回 教師なし学習（k-means・PCA）・強化学習', link: 'https://www.youtube.com/watch?v=tVz4Waf3pQc&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
@@ -39,7 +39,7 @@ const CERTIFICATIONS = [
             ]
           },
           {
-            id: 'g-p1-t3', title: 'Week 3：モデルの評価・過学習対策（第8回）',
+            id: 'g-p1-t3', title: '⬅ Week 3：モデルの評価・過学習対策（第8回）【2周目 4/4〜4/11 今週開始】',
             tasks: [
               { id: 'g-p1-t3-v', type: 'video', label: '動画：第8回 モデルの評価（混同行列・精度・適合率・再現率・F値・ROC曲線・交差検証・過学習）', link: 'https://www.youtube.com/watch?v=Mg7OxnjKtbE&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
               { id: 'g-p1-t3-q', type: 'quiz',  label: '演習：黒本 モデルの評価・過学習対策 分野の問題を解く', link: null },
@@ -51,7 +51,7 @@ const CERTIFICATIONS = [
       {
         id: 'g-p2',
         title: 'Phase 2：ディープラーニング基礎・CNN',
-        range: '4〜5週（4/27〜5/10）',
+        range: '4〜5週（4/12〜4/25）',
         topics: [
           {
             id: 'g-p2-t1', title: 'Week 4：NN基礎・活性化関数・最適化・正則化（第9〜11回）',
@@ -77,7 +77,7 @@ const CERTIFICATIONS = [
       {
         id: 'g-p3',
         title: 'Phase 3：DL応用・最新技術',
-        range: '6〜8週（5/11〜5/31）',
+        range: '6〜8週（4/26〜5/4）【2周目：要点確認＋演習】',
         topics: [
           {
             id: 'g-p3-t1', title: 'Week 6：画像認識応用・音声処理（第15〜18回）',
@@ -112,7 +112,7 @@ const CERTIFICATIONS = [
       {
         id: 'g-p4',
         title: 'Phase 4：数学基礎・法律・倫理',
-        range: '9〜11週（6/1〜6/21）',
+        range: '9〜11週（5/5〜5/7）【2周目：要点確認＋演習】',
         topics: [
           {
             id: 'g-p4-t1', title: 'Week 9：AIに必要な数理・統計知識（第32〜33回）',
@@ -145,7 +145,7 @@ const CERTIFICATIONS = [
       {
         id: 'g-p5',
         title: 'Phase 5：総仕上げ・模擬試験',
-        range: '12週（6/22〜6/28）',
+        range: '直前確認（5/8）',
         topics: [
           {
             id: 'g-p5-t1', title: 'Week 12：模擬試験・弱点補強・直前確認',
@@ -169,8 +169,8 @@ const CERTIFICATIONS = [
   },
   {
     id: 'sg',
-    name: '情報セキュリティマネジメント',
-    fullName: '情報セキュリティマネジメント試験（SG）',
+    name: 'SG試験',
+    fullName: '情報セキュリティマネジメント試験(SG)',
     category: 'IPA',
     icon: '🛡️',
     color: '#4ade80',
@@ -179,9 +179,171 @@ const CERTIFICATIONS = [
     resources: [],
   },
   {
+    id: 'ap',
+    name: 'AP試験',
+    fullName: '応用情報技術者試験(AP)',
+    category: 'IPA',
+    icon: '💡',
+    color: '#fb923c',
+    targetDate: '2026-11',
+    targetLabel: '2026年秋期（11月頃）受験目標',
+    examInfo: '年2回（春・秋）｜ペーパー試験｜午前：90分・80問（四肢択一）/ 午後：100分・問題選択式（記述含む）｜合格率約20〜25%。AP合格でSC試験の午前I免除（2年間有効）。',
+    passCriteria: '午前・午後ともに60点以上',
+    studyHours: 200,
+    phases: [
+      {
+        id: 'ap-p0',
+        title: 'Phase 0：現状把握・計画',
+        range: '1〜2週（6/1〜6/14）',
+        topics: [
+          {
+            id: 'ap-p0-t1', title: 'Week 1：ベースライン測定・出題分析',
+            tasks: [
+              { id: 'ap-p0-t1-q1', type: 'quiz', label: '演習：直近3年の午前問題（2023〜2025）を時間計測（90分）して解く', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p0-t1-r',  type: 'review', label: '分析：大問カテゴリ別の正答率を記録し、60%未満の分野を特定する', link: null, hint: 'テクノロジ系・マネジメント系・ストラテジ系の大カテゴリで分けて集計。弱点分野に重点投資する。' },
+            ]
+          },
+          {
+            id: 'ap-p0-t2', title: 'Week 2：午後試験の傾向分析・選択科目決定',
+            tasks: [
+              { id: 'ap-p0-t2-r1', type: 'review', label: '確認：午後試験の問題構成（必答：情報セキュリティ＋選択4問）を把握する', link: 'https://www.ap-siken.com/', hint: '問1（情報セキュリティ）は必答。問2〜11から4問選択。SC受験を見据えてネットワーク系を選ぶと相乗効果大。' },
+              { id: 'ap-p0-t2-r2', type: 'review', label: '決定：過去問を流し読みし、自分の得意な選択問題4分野を仮決定する', link: null, hint: 'SC対策と親和性が高い組み合わせ例：①情報セキュリティ（必答）②ネットワーク③システムアーキテクチャ④プログラミング。' },
+            ]
+          },
+        ]
+      },
+      {
+        id: 'ap-p1',
+        title: 'Phase 1：テクノロジ系 午前対策',
+        range: '3〜6週（6/15〜7/12）',
+        topics: [
+          {
+            id: 'ap-p1-t1', title: 'Week 3：コンピュータ構成・OS・データ構造',
+            tasks: [
+              { id: 'ap-p1-t1-q1', type: 'quiz', label: '演習：コンピュータ構成・OS・データ構造分野 過去問30問', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p1-t1-r',  type: 'review', label: '復習：2進数変換・補数・論理演算・OSスケジューリング・スタック/キューの使い分け', link: null, hint: '2進数↔10進数↔16進数変換は確実に。ラウンドロビン・優先度スケジューリングも頻出。' },
+            ]
+          },
+          {
+            id: 'ap-p1-t2', title: 'Week 4：アルゴリズム・プログラミング',
+            tasks: [
+              { id: 'ap-p1-t2-q1', type: 'quiz', label: '演習：アルゴリズム・プログラミング分野 過去問30問', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p1-t2-r',  type: 'review', label: '復習：ソートの計算量・探索アルゴリズム・再帰処理・OOPの概念（カプセル化・継承・多態性）', link: null, hint: 'バブル/選択/挿入O(n²)、マージ/クイックO(n log n)。二分探索O(log n)。各ソートの安定性も確認。' },
+            ]
+          },
+          {
+            id: 'ap-p1-t3', title: 'Week 5：データベース',
+            tasks: [
+              { id: 'ap-p1-t3-q1', type: 'quiz', label: '演習：データベース分野 過去問30問', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p1-t3-r',  type: 'review', label: '復習：E-R図・正規化（1NF〜3NF）・SQL（JOIN・GROUP BY・HAVING）・トランザクション（ACID）', link: null, hint: 'SQL記述順：SELECT→FROM→WHERE→GROUP BY→HAVING→ORDER BY。第3正規化は「推移的関数従属の排除」。' },
+            ]
+          },
+          {
+            id: 'ap-p1-t4', title: 'Week 6：ネットワーク・セキュリティ（午前）',
+            tasks: [
+              { id: 'ap-p1-t4-q1', type: 'quiz', label: '演習：ネットワーク・セキュリティ分野 過去問30問', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p1-t4-r',  type: 'review', label: '復習：TCP/IP 4層・プロトコルとポート番号・サブネット計算・暗号化方式の比較', link: null, hint: 'SC試験とも重複が多い分野。HTTP:80・HTTPS:443・SSH:22・FTP:21・SMTP:25・DNS:53 は必須。', action: 'flashcard' },
+            ]
+          },
+        ]
+      },
+      {
+        id: 'ap-p2',
+        title: 'Phase 2：マネジメント・ストラテジ系 午前対策',
+        range: '7〜9週（7/13〜8/2）',
+        topics: [
+          {
+            id: 'ap-p2-t1', title: 'Week 7：PM・サービスマネジメント・監査',
+            tasks: [
+              { id: 'ap-p2-t1-q1', type: 'quiz', label: '演習：PM・SM・監査分野 過去問30問', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p2-t1-r',  type: 'review', label: '復習：PMBOK知識エリア・EVM指標（CPI/SPI）・ITIL v4・システム監査の手順', link: null, hint: 'EV-PV=SV（スケジュール差異）、EV-AC=CV（コスト差異）、EV/AC=CPI（>1が良好）。クリティカルパス計算も頻出。' },
+            ]
+          },
+          {
+            id: 'ap-p2-t2', title: 'Week 8：企業活動・法務',
+            tasks: [
+              { id: 'ap-p2-t2-q1', type: 'quiz', label: '演習：企業活動・法務分野 過去問30問', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p2-t2-r',  type: 'review', label: '復習：財務諸表（BS・PL）・PERT・線形計画法・知財法（特許・著作権・不正競争防止法）', link: null, hint: '損益分岐点=固定費÷（1-変動費率）は必須。PERTのクリティカルパス計算手順を確実に習得。' },
+            ]
+          },
+          {
+            id: 'ap-p2-t3', title: 'Week 9：システム戦略・経営戦略',
+            tasks: [
+              { id: 'ap-p2-t3-q1', type: 'quiz', label: '演習：システム戦略・経営戦略分野 過去問30問', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p2-t3-r',  type: 'review', label: '復習：SaaS/PaaS/IaaS・BPR・SCM・CRM・BSC・UMLの主要図（クラス・シーケンス・ユースケース）', link: null, hint: 'UML 3大図の違い：クラス図=構造、シーケンス図=時系列の相互作用、ユースケース図=要求。アクティビティ図=フロー。' },
+            ]
+          },
+        ]
+      },
+      {
+        id: 'ap-p3',
+        title: 'Phase 3：午後試験対策',
+        range: '10〜13週（8/3〜8/30）',
+        topics: [
+          {
+            id: 'ap-p3-t1', title: 'Week 10：情報セキュリティ（必答）記述対策',
+            tasks: [
+              { id: 'ap-p3-t1-q1', type: 'quiz', label: '演習：AP午後 情報セキュリティ問題 直近5年分を時間計測して解く', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p3-t1-r',  type: 'review', label: '復習：記述解答のキーワード整理（攻撃手法・対策・リスク管理の頻出パターン）', link: null, hint: 'AP情報セキュリティの記述解答は「攻撃の種類・被害内容・具体的対策」の3点を含める。SC試験の知識が直結する。', action: 'flashcard' },
+            ]
+          },
+          {
+            id: 'ap-p3-t2', title: 'Week 11〜12：選択問題 演習（選択分野①②）',
+            tasks: [
+              { id: 'ap-p3-t2-q1', type: 'quiz', label: '演習：選択分野①（ネットワーク・システムアーキテクチャ等）の過去問5年分', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p3-t2-q2', type: 'quiz', label: '演習：選択分野②（プログラミング・DB等）の過去問5年分', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p3-t2-r',  type: 'review', label: '復習：記述解答で使えるキーワード・典型的な問題パターンを分野別にまとめる', link: null, hint: '各選択分野で「よく問われる概念・記述解答のキーワード」をノートにまとめておくと本番で時間節約できる。' },
+            ]
+          },
+          {
+            id: 'ap-p3-t3', title: 'Week 13：選択問題 演習（選択分野③④）・本番選択確定',
+            tasks: [
+              { id: 'ap-p3-t3-q1', type: 'quiz', label: '演習：選択分野③（PM・サービス管理等）の過去問5年分', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p3-t3-q2', type: 'quiz', label: '演習：選択分野④（組込み・情報システム開発等）の過去問5年分', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p3-t3-r',  type: 'review', label: '決定：本番で選ぶ4分野を最終確定・捨て分野を決定する', link: null, hint: 'SC対策との親和性が高い推奨構成：情報セキュリティ（必答）+ネットワーク+システムアーキテクチャ+プログラミング。' },
+            ]
+          },
+        ]
+      },
+      {
+        id: 'ap-p4',
+        title: 'Phase 4：総仕上げ・模擬試験',
+        range: '14〜17週（9/1〜10/4）',
+        topics: [
+          {
+            id: 'ap-p4-t1', title: 'Week 14〜15：午前全分野 総演習',
+            tasks: [
+              { id: 'ap-p4-t1-q1', type: 'quiz', label: '演習：午前 直近5年分を年度別・時間計測（90分）で解く', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p4-t1-r',  type: 'review', label: '復習：正答率70%未満の分野を重点復習・間違えた問題の解説を精読する', link: null, hint: '目標は80%以上。60〜80%の分野は解説精読で足固め。60%未満はPhase 1〜2に戻って再確認。' },
+            ]
+          },
+          {
+            id: 'ap-p4-t2', title: 'Week 16：午後 総合模擬試験',
+            tasks: [
+              { id: 'ap-p4-t2-q1', type: 'quiz', label: '演習：午後 直近年度の本試験問題（100分計測）を実施・採点', link: 'https://www.ap-siken.com/apkakomon.php' },
+              { id: 'ap-p4-t2-r',  type: 'review', label: '復習：記述解答の失点パターン分析・キーワード不足の分野を特定する', link: null, hint: '部分点のためのキーワードを意識。「〜という攻撃を、〜することで防ぐ」のような具体的記述が高評価。' },
+            ]
+          },
+          {
+            id: 'ap-p4-t3', title: 'Week 17：直前確認',
+            tasks: [
+              { id: 'ap-p4-t3-r1', type: 'review', label: '直前：頻出公式・法律・略語の最終暗記チェック（午前を1時間でさらう）', link: null, hint: 'EVM公式・正規化手順・主要プロトコル・損益分岐点・PMBOK知識エリアを重点確認。' },
+              { id: 'ap-p4-t3-r2', type: 'review', label: '確認：受験票・試験会場・持ち物の確認（HB鉛筆・消しゴム必須）', link: 'https://www.jitec.ipa.go.jp/', hint: 'AP試験はペーパー試験（マークシート＋記述）。試験会場へのルート・所要時間を事前確認。' },
+            ]
+          },
+        ]
+      },
+    ],
+    resources: [
+      { name: 'IPA 応用情報技術者試験 公式ページ', url: 'https://www.ipa.go.jp/shiken/kubun/ap.html', category: '公式' },
+      { name: 'AP試験 過去問道場', url: 'https://www.ap-siken.com/apkakomon.php', category: '演習' },
+      { name: 'キタミ式イラストIT塾 応用情報技術者', url: null, local: true, category: '教材' },
+    ]
+  },
+  {
     id: 'sc',
     name: 'SC試験',
-    fullName: '情報処理安全確保支援士試験',
+    fullName: '情報処理安全確保支援士試験(SC)',
     category: 'セキュリティ',
     icon: '🔐',
     color: '#38bdf8',
@@ -398,7 +560,7 @@ const CERTIFICATIONS = [
 // ===== 資格カテゴリ定義 =====
 const CERT_CATEGORIES = [
   { id: 'ai',  label: 'AI資格',    certIds: ['g-ken'] },
-  { id: 'ipa', label: '情処(IPA)', certIds: ['sg', 'sc'] },
+  { id: 'ipa', label: '情処(IPA)', certIds: ['sg', 'ap', 'sc'] },
 ];
 
 // ===== フラッシュカード定義 =====
@@ -449,8 +611,9 @@ const FLASHCARDS = [
 
 // ロードマップ（全体タイムライン）
 const ROADMAP = [
-  { certId: 'g-ken', label: 'G検定',  startMonth: '2026-04', endMonth: '2026-07', milestone: '2026年7月 受験' },
-  { certId: 'sc',    label: 'SC試験', startMonth: '2026-08', endMonth: '2027-02', milestone: '2027年2月頃 受験（要確認）' },
+  { certId: 'g-ken', label: 'G検定',  startMonth: '2026-04', endMonth: '2026-05', milestone: '2026年5月9日 受験（オンライン）' },
+  { certId: 'ap',    label: 'AP試験', startMonth: '2026-06', endMonth: '2026-11', milestone: '2026年11月 受験目標' },
+  { certId: 'sc',    label: 'SC試験', startMonth: '2026-12', endMonth: '2027-02', milestone: '2027年2月頃 受験（要確認）' },
 ];
 
 // バッジ定義
@@ -459,6 +622,8 @@ const BADGES = [
   { id: 'week-warrior', icon: '🔥', name: 'ウィークウォリアー',  desc: '7日連続学習',               condition: p => p.streak >= 7 },
   { id: 'half-way',     icon: '🎯', name: 'ハーフウェイ',        desc: 'G検定 50%完了',             condition: p => p.certProgress['g-ken'] >= 50 },
   { id: 'g-ken-done',   icon: '🤖', name: 'G検定 マスター',      desc: 'G検定 全タスク完了',        condition: p => p.certProgress['g-ken'] >= 100 },
+  { id: 'ap-started',   icon: '💡', name: 'AP 始動',             desc: 'AP試験学習を開始',           condition: p => p.certProgress['ap'] >= 1 },
+  { id: 'ap-done',      icon: '🎓', name: 'AP マスター',         desc: 'AP試験 全タスク完了',       condition: p => p.certProgress['ap'] >= 100 },
   { id: 'sc-started',   icon: '🔐', name: 'SC 始動',             desc: 'SC試験学習を開始',           condition: p => p.certProgress['sc'] >= 1 },
   { id: 'sc-done',      icon: '🏆', name: 'SC マスター',         desc: 'SC試験 全タスク完了',       condition: p => p.certProgress['sc'] >= 100 },
   { id: 'lv10',         icon: '⭐', name: 'レベル10達成',        desc: 'レベル10に到達',            condition: p => p.level >= 10 },
