@@ -21,8 +21,8 @@
     </div>
     <div class="nav-tabs" id="nav-tabs">
       <button class="nav-tab active" data-view="dashboard">ダッシュボード</button>
-      <button class="nav-tab" data-view="cert-g-ken">G検定</button>
-      <button class="nav-tab" data-view="cert-sc">SC試験</button>
+      <button class="nav-tab" data-view="category-ai">AI資格</button>
+      <button class="nav-tab" data-view="category-ipa">情処(IPA)</button>
       <button class="nav-tab" data-view="flashcard">カード</button>
     </div>
     <div id="sync-status" class="sync-status"></div>
@@ -115,13 +115,13 @@
 
     </div>
 
-    <!-- ===== 資格詳細（共通テンプレート） ===== -->
-    <div id="view-cert-g-ken" class="view">
-      <div id="cert-detail-g-ken"></div>
-    </div>
-    <div id="view-cert-sc" class="view">
-      <div id="cert-detail-sc"></div>
-    </div>
+    <!-- ===== カテゴリビュー ===== -->
+    <div id="view-category-ai" class="view"></div>
+    <div id="view-category-ipa" class="view"></div>
+
+    <!-- ===== 資格詳細（ダッシュボードカードからの直接遷移用・内容はカテゴリビューと共有） ===== -->
+    <div id="view-cert-g-ken" class="view"></div>
+    <div id="view-cert-sc" class="view"></div>
 
     <!-- ===== フラッシュカード ===== -->
     <div id="view-flashcard" class="view">

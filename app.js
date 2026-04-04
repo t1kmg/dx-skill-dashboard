@@ -249,7 +249,7 @@ function renderCountdown() {
   if (!container) return;
   const today = new Date(); today.setHours(0,0,0,0);
 
-  container.innerHTML = CERTIFICATIONS.map(cert => {
+  container.innerHTML = CERTIFICATIONS.filter(cert => !cert.obtained).map(cert => {
     const allTasks  = cert.phases.flatMap(p => p.topics.flatMap(t => t.tasks));
     const remaining = allTasks.filter(t => !isDone(t.id)).length;
     const target    = new Date(cert.targetDate + '-01');
@@ -598,8 +598,10 @@ window.resetAll = function() {
 window.navigate = function(view) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('view-' + view).classList.add('active');
-  document.querySelector(`[data-view="${view}"]`).classList.add('active');
+  const viewEl = document.getElementById('view-' + view);
+  if (viewEl) viewEl.classList.add('active');
+  const tabEl = document.querySelector(`[data-view="${view}"]`);
+  if (tabEl) tabEl.classList.add('active');
 };
 
 // ===== ロードマップ描画 =====
@@ -608,7 +610,7 @@ function renderRoadmap(certProgress) {
   if (!container) return;
 
   const months   = ['2026/4','2026/7','2026/10','2027/1','2027/4'];
-  const startMs  = new Date('2026-04-01').getTime();
+  const startMs  = new Date('2026-04-06').getTime();
   const endMs    = new Date('2027-04-30').getTime();
   const totalMs  = endMs - startMs;
 
@@ -637,12 +639,18 @@ function renderRoadmap(certProgress) {
   container.innerHTML = `<div class="roadmap-timeline">${axisHtml}<div class="roadmap-bars">${barsHtml}</div></div>`;
 }
 
+// ===== カテゴリID取得ヘルパー =====
+function getCertCategoryId(certId) {
+  const cat = CERT_CATEGORIES.find(c => c.certIds.includes(certId));
+  return cat ? cat.id : null;
+}
+
 // ===== 資格カード描画 =====
 function renderCertCards(certProgress) {
   const container = document.getElementById('cert-cards');
   if (!container) return;
 
-  container.innerHTML = CERTIFICATIONS.map(cert => {
+  container.innerHTML = CERTIFICATIONS.filter(cert => !cert.obtained).map(cert => {
     const pct      = certProgress[cert.id] || 0;
     const allTasks = cert.phases.flatMap(p => p.topics.flatMap(t => t.tasks));
     const done     = allTasks.filter(t => isDone(t.id)).length;
@@ -656,7 +664,7 @@ function renderCertCards(certProgress) {
     }
 
     return `
-      <div class="cert-card" onclick="navigate('cert-${cert.id}')">
+      <div class="cert-card" onclick="navigate('category-${getCertCategoryId(cert.id)}')">
         <div class="cert-card-accent" style="background:${cert.color}"></div>
         <div class="cert-card-header">
           <span class="cert-card-icon">${cert.icon}</span>
@@ -689,7 +697,7 @@ function renderTodayTasks() {
   dateEl.textContent = `${now.getMonth()+1}月${now.getDate()}日`;
 
   const suggestions = [];
-  CERTIFICATIONS.forEach(cert => {
+  CERTIFICATIONS.filter(cert => !cert.obtained).forEach(cert => {
     let count = 0;
     outer: for (const phase of cert.phases) {
       for (const topic of phase.topics) {
@@ -713,6 +721,8 @@ function renderTodayTasks() {
         <div class="today-task-cert" style="color:${cert.color}">${cert.name}</div>
         <span class="today-task-label">${task.label}</span>
         ${task.link ? `<a href="${task.link}" target="_blank" rel="noopener" class="today-task-link">リソースを開く →</a>` : ''}
+        ${task.type === 'review' && task.hint ? `<div class="review-hint">📌 ${task.hint}</div>` : ''}
+        ${task.type === 'review' && task.action === 'flashcard' ? `<button class="review-fc-btn" onclick="navigate('flashcard')">🃏 フラッシュカードで確認</button>` : ''}
       </div>
       <input type="checkbox" class="today-task-check" ${isDone(task.id) ? 'checked' : ''}
         onchange="toggleTask('${task.id}','${task.type}')">
@@ -844,6 +854,8 @@ function renderCurriculum(cert) {
             <div class="task-row-body">
               <span class="task-row-label">${typeEmoji[task.type] || '📌'} ${task.label}</span>
               ${task.link ? `<a href="${task.link}" target="_blank" rel="noopener" class="task-row-link">リソースを開く →</a>` : ''}
+              ${task.type === 'review' && task.hint ? `<div class="review-hint">📌 ${task.hint}</div>` : ''}
+              ${task.type === 'review' && task.action === 'flashcard' ? `<button class="review-fc-btn" onclick="navigate('flashcard')">🃏 フラッシュカードで確認</button>` : ''}
             </div>
           </div>`;
       }).join('');
@@ -916,6 +928,71 @@ function renderHero(stats) {
   setText('nav-level', 'Lv.' + stats.level);
 }
 
+// ===== カテゴリビュー描画 =====
+function renderCategoryViews(stats) {
+  CERT_CATEGORIES.forEach(cat => {
+    const container = document.getElementById('view-category-' + cat.id);
+    if (!container) return;
+
+    container.innerHTML = cat.certIds.map(certId => {
+      const cert = CERTIFICATIONS.find(c => c.id === certId);
+      if (!cert) return '';
+
+      if (cert.obtained) {
+        return `<div class="cert-obtained-card">
+          <span class="cert-obtained-icon">${cert.icon}</span>
+          <div class="cert-obtained-body">
+            <div class="cert-obtained-name">${cert.name}</div>
+            <div class="cert-obtained-fullname">${cert.fullName}</div>
+            <div class="cert-obtained-label">✅ 取得済み</div>
+          </div>
+        </div>`;
+      }
+
+      // アクティブ資格：フルカリキュラムをインライン表示（IDに cert.id を使用）
+      const pct      = stats.certProgress[certId] || 0;
+      const allTasks = cert.phases.flatMap(p => p.topics.flatMap(t => t.tasks));
+      const done     = allTasks.filter(t => isDone(t.id)).length;
+      return `
+        <div class="cert-detail-header">
+          <div class="cert-detail-header-accent" style="background:${cert.color}"></div>
+          <div class="cert-detail-top">
+            <span class="cert-detail-icon">${cert.icon}</span>
+            <div class="cert-detail-title">
+              <h1>${cert.name}</h1>
+              <p>${cert.fullName}</p>
+            </div>
+          </div>
+          <div class="cert-detail-stats">
+            <dl class="cert-detail-stat"><dt>目標</dt><dd>${cert.targetLabel}</dd></dl>
+            <dl class="cert-detail-stat"><dt>学習時間目安</dt><dd>${cert.studyHours}時間</dd></dl>
+            <dl class="cert-detail-stat"><dt>合格基準</dt><dd>${cert.passCriteria}</dd></dl>
+          </div>
+          <div class="exam-info-box">${cert.examInfo}</div>
+          <div class="cert-detail-progress">
+            <div class="cert-detail-progress-nums">
+              <span><strong>${pct}%</strong> 完了</span>
+              <span>${done} / ${allTasks.length} タスク完了</span>
+            </div>
+            <div class="cert-detail-bar-wrap">
+              <div class="cert-detail-bar" style="background:${cert.color};width:${pct}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="cert-tabs">
+          <button class="cert-tab active" onclick="switchTab('${certId}','curriculum',this)">カリキュラム</button>
+          <button class="cert-tab" onclick="switchTab('${certId}','resources',this)">リソース</button>
+        </div>
+        <div id="tab-curriculum-${certId}" class="cert-tab-panel active">
+          ${renderCurriculum(cert)}
+        </div>
+        <div id="tab-resources-${certId}" class="cert-tab-panel">
+          ${renderResources(cert)}
+        </div>`;
+    }).join('');
+  });
+}
+
 // ===== まとめて再描画 =====
 function renderAll(stats) {
   renderHero(stats);
@@ -926,7 +1003,7 @@ function renderAll(stats) {
   renderTodayTasks();
   renderCompletedLog();
   renderBadges();
-  CERTIFICATIONS.forEach(cert => renderCertDetail(cert, stats));
+  renderCategoryViews(stats);
 }
 
 // ===== ユーティリティ =====

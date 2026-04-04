@@ -186,6 +186,18 @@ body {
 .badge-name { font-size: 0.68rem; font-weight: 600; line-height: 1.3; }
 
 /* ===== Cert Detail View ===== */
+/* 取得済み資格カード */
+.cert-obtained-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--card); border: 1px solid #4ade8040;
+  border-radius: var(--radius); padding: 16px 20px;
+  margin-bottom: 16px;
+}
+.cert-obtained-icon { font-size: 2rem; }
+.cert-obtained-name { font-weight: 700; font-size: 1rem; }
+.cert-obtained-fullname { font-size: 0.78rem; color: var(--text2); margin-top: 2px; }
+.cert-obtained-label { font-size: 0.82rem; color: #4ade80; font-weight: 600; margin-top: 6px; }
+
 .cert-detail-header {
   background: var(--card); border: 1px solid var(--card-border);
   border-radius: var(--radius); padding: 22px;
@@ -259,6 +271,9 @@ body {
 .task-row-label { font-size: 0.88rem; line-height: 1.4; display: block; }
 .task-row-link { display: inline-block; font-size: 0.78rem; color: var(--accent2); text-decoration: none; margin-top: 3px; }
 .task-row-link:hover { text-decoration: underline; }
+.review-hint { font-size: 0.76rem; color: var(--warn); background: rgba(245,158,11,0.08); border-left: 2px solid var(--warn); padding: 5px 8px; border-radius: 0 6px 6px 0; margin-top: 5px; line-height: 1.5; }
+.review-fc-btn { display: inline-block; margin-top: 6px; padding: 3px 10px; font-size: 0.76rem; background: rgba(129,140,248,0.12); color: var(--accent); border: 1px solid rgba(129,140,248,0.3); border-radius: 6px; cursor: pointer; }
+.review-fc-btn:hover { background: rgba(129,140,248,0.22); }
 
 /* ===== Resources ===== */
 .resources-list { display: flex; flex-direction: column; gap: 10px; }
