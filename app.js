@@ -566,6 +566,87 @@ window.fcAnswer = function(correct) {
   fcRender();
 };
 
+// ===== #8 用語集 =====
+let glState = { cert: 'all', query: '' };
+
+function glRender() {
+  const list = document.getElementById('gl-list');
+  const count = document.getElementById('gl-count');
+  if (!list) return;
+
+  const q = glState.query.trim().toLowerCase();
+  let cards = FLASHCARDS;
+  if (glState.cert !== 'all') cards = cards.filter(c => c.cert === glState.cert);
+  if (q) cards = cards.filter(c =>
+    c.term.toLowerCase().includes(q) || c.definition.toLowerCase().includes(q)
+  );
+
+  // cert ごとに色
+  const certColors = { 'g-ken': 'var(--g-color)', 'sc': 'var(--sc-color)' };
+
+  count.textContent = `${cards.length} 件`;
+
+  if (cards.length === 0) {
+    list.innerHTML = `<div class="gl-empty">該当する用語が見つかりませんでした</div>`;
+    return;
+  }
+
+  list.innerHTML = cards.map(card => {
+    const color = certColors[card.cert] || 'var(--accent)';
+    const stats = (state.flashcards && state.flashcards[card.id]) || { correct: 0, incorrect: 0 };
+    const mastered = stats.correct >= 3 && stats.correct > stats.incorrect;
+    const masteredBadge = mastered ? `<span class="gl-mastered">✓ 習得済み</span>` : '';
+
+    // 検索ワードをハイライト
+    function hl(text) {
+      if (!q) return text;
+      const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(re, '<mark class="gl-hl">$1</mark>');
+    }
+
+    return `
+    <div class="gl-item" onclick="this.classList.toggle('open')">
+      <div class="gl-item-head">
+        <span class="gl-cert-dot" style="background:${color}"></span>
+        <span class="gl-cert-tag" style="color:${color}">${card.certLabel}</span>
+        <span class="gl-term">${hl(card.term)}</span>
+        ${masteredBadge}
+        <span class="gl-chevron">▾</span>
+      </div>
+      <div class="gl-item-body">
+        <p class="gl-definition">${hl(card.definition)}</p>
+        <div class="gl-item-stats">正解 ${stats.correct}回 ／ 不正解 ${stats.incorrect}回
+          <button class="gl-fc-btn" onclick="event.stopPropagation(); navigate('flashcard')">🃏 カード学習へ</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+window.glFilter = function() {
+  const input = document.getElementById('gl-search');
+  const clearBtn = document.getElementById('gl-clear');
+  glState.query = input.value;
+  if (clearBtn) clearBtn.style.display = input.value ? '' : 'none';
+  glRender();
+};
+
+window.glClear = function() {
+  const input = document.getElementById('gl-search');
+  if (input) input.value = '';
+  glState.query = '';
+  const clearBtn = document.getElementById('gl-clear');
+  if (clearBtn) clearBtn.style.display = 'none';
+  glRender();
+};
+
+window.glSetCert = function(btn) {
+  document.querySelectorAll('[data-glfilter]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  glState.cert = btn.dataset.glfilter;
+  glRender();
+};
+
 // ===== エクスポート =====
 window.exportState = function() {
   const json = JSON.stringify(state, null, 2);
@@ -602,6 +683,7 @@ window.navigate = function(view) {
   if (viewEl) viewEl.classList.add('active');
   const tabEl = document.querySelector(`[data-view="${view}"]`);
   if (tabEl) tabEl.classList.add('active');
+  if (view === 'glossary') glRender();
 };
 
 // ===== ロードマップ描画 =====
