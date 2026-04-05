@@ -24,7 +24,7 @@ const CERTIFICATIONS = [
             tasks: [
               { id: 'g-p1-t1-v1', type: 'video', label: '動画：人工知能とは何か（AIの定義・研究の歴史・第1〜3次AIブーム）', link: 'https://youtu.be/2UB6HnB349E' },
               { id: 'g-p1-t1-v2', type: 'video', label: '動画：人工知能をめぐる動向（探索・推論・知識表現・フレーム問題・シンギュラリティ）', link: 'https://youtu.be/YFbEtE8fkGg' },
-              { id: 'g-p1-t1-q', type: 'quiz',  label: '演習：黒本 AI概論・AIをめぐる動向 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p1-t1-q', type: 'quiz',  label: '演習：黒本 AI概論・AIをめぐる動向 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p1-t1-r', type: 'review', label: '復習：汎用AI・特化型AI・シンギュラリティ・フレーム問題・記号接地問題の定義確認', link: null, hint: '第1〜3次ブームの「きっかけ・主要技術・終焉理由」を時系列でまとめる。フラッシュカード「シンギュラリティ」でも確認できます。', action: 'flashcard' },
             ]
           },
@@ -32,7 +32,7 @@ const CERTIFICATIONS = [
             id: 'g-p1-t2', title: 'Week 2：機械学習の概要（第5〜7回）【白本1周目完了済み✓】',
             tasks: [
               { id: 'g-p1-t2-v1', type: 'video', label: '動画：機械学習の概要（教師あり・なし・強化学習・決定木・SVM・k-means・PCA）', link: 'https://youtu.be/d4brSTv_11k' },
-              { id: 'g-p1-t2-q', type: 'quiz',  label: '演習：黒本 機械学習（教師あり・なし・強化学習）分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p1-t2-q', type: 'quiz',  label: '演習：黒本 機械学習（教師あり・なし・強化学習）分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p1-t2-r', type: 'review', label: '復習：決定木・SVM・k近傍法・k-means・PCAの特徴と用途の比較表作成', link: null, hint: '各アルゴリズムの「学習方法・得意なタスク・パラメータ調整ポイント」を表でまとめる。', action: 'flashcard' },
             ]
           },
@@ -40,7 +40,7 @@ const CERTIFICATIONS = [
             id: 'g-p1-t3', title: '⬅ Week 3：モデルの評価・過学習対策（第8回）【2周目 4/4〜4/11 今週開始】',
             tasks: [
               { id: 'g-p1-t3-v', type: 'video', label: '動画：ディープラーニングの概要（モデル評価・混同行列・精度・F値・ROC曲線・過学習）', link: 'https://youtu.be/v4vo_wqcsfE' },
-              { id: 'g-p1-t3-q', type: 'quiz',  label: '演習：黒本 モデルの評価・過学習対策 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p1-t3-q', type: 'quiz',  label: '演習：黒本 モデルの評価・過学習対策 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p1-t3-r', type: 'review', label: '復習：精度・適合率・再現率・F値の計算式と使い分け・AUCの意味', link: null, hint: '混同行列（TP/FP/FN/TN）から各指標を手計算で求められるよう練習する。フラッシュカード「F値」でも確認できます。', action: 'flashcard' },
             ]
           },
@@ -56,7 +56,7 @@ const CERTIFICATIONS = [
             tasks: [
               { id: 'g-p2-t1-v1', type: 'video', label: '動画：ディープラーニング概要（ニューラルネットワーク・誤差逆伝播・学習の仕組み）', link: 'https://youtu.be/v4vo_wqcsfE' },
               { id: 'g-p2-t1-v2', type: 'video', label: '動画：ディープラーニングの要素技術（活性化関数・最適化・正則化・ドロップアウト・バッチ正規化）', link: 'https://youtu.be/ttjCKctEjm8' },
-              { id: 'g-p2-t1-q', type: 'quiz',  label: '演習：黒本 NN・活性化関数・最適化・正則化 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p2-t1-q', type: 'quiz',  label: '演習：黒本 NN・活性化関数・最適化・正則化 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p2-t1-r', type: 'review', label: '復習：ReLU・Sigmoid・Softmaxの使い分け・SGD/Adamの違い・ドロップアウト/L1/L2の目的', link: null, hint: '各活性化関数の値域・微分・用途・勾配消失との関係をまとめる。フラッシュカード「ReLU」でも確認できます。', action: 'flashcard' },
             ]
           },
@@ -65,7 +65,7 @@ const CERTIFICATIONS = [
             tasks: [
               { id: 'g-p2-t2-v1', type: 'video', label: '動画：ディープラーニングの要素技術（CNN・畳み込み・プーリング・スキップ結合）', link: 'https://youtu.be/ttjCKctEjm8' },
               { id: 'g-p2-t2-v2', type: 'video', label: '動画：ディープラーニングの応用例（深層生成モデル・GAN・VAE・拡散モデル）', link: 'https://youtu.be/KgfOa8YtPLk' },
-              { id: 'g-p2-t2-q', type: 'quiz',  label: '演習：黒本 CNN・深層生成モデル 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p2-t2-q', type: 'quiz',  label: '演習：黒本 CNN・深層生成モデル 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p2-t2-r', type: 'review', label: '復習：畳み込み・プーリング・スキップ結合の役割・GAN/VAE/拡散モデルの仕組みの違い', link: null, hint: 'GAN=敵対的学習、VAE=変分下界・潜在空間、拡散モデル=ノイズ除去の各生成原理を図解でまとめる。フラッシュカード「転移学習」でも確認できます。', action: 'flashcard' },
             ]
           },
@@ -81,7 +81,7 @@ const CERTIFICATIONS = [
             tasks: [
               { id: 'g-p3-t1-v1', type: 'video', label: '動画：ディープラーニングの応用例（画像認識・物体検出・セグメンテーション・転移学習）', link: 'https://youtu.be/KgfOa8YtPLk' },
               { id: 'g-p3-t1-v2', type: 'video', label: '動画：ディープラーニングの応用例（音声認識・音声合成・TTS）', link: 'https://youtu.be/KgfOa8YtPLk' },
-              { id: 'g-p3-t1-q', type: 'quiz',  label: '演習：黒本 画像認識応用・音声処理 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p3-t1-q', type: 'quiz',  label: '演習：黒本 画像認識応用・音声処理 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p3-t1-r', type: 'review', label: '復習：転移学習・ファインチューニングの違い・物体識別/検出/セグメンテーションの出力の違い', link: null, hint: '転移学習=事前学習済み重みを流用、ファインチューニング=一部の層を再学習。3タスクの出力の違いを図解でまとめる。', action: 'flashcard' },
             ]
           },
@@ -90,7 +90,7 @@ const CERTIFICATIONS = [
             tasks: [
               { id: 'g-p3-t2-v1', type: 'video', label: '動画：ディープラーニングの応用例（NLP・RNN・LSTM・Attention・Transformer）', link: 'https://youtu.be/KgfOa8YtPLk' },
               { id: 'g-p3-t2-v2', type: 'video', label: '動画：ディープラーニングの応用例（BERT・GPT・LLM・マルチモーダル）', link: 'https://youtu.be/KgfOa8YtPLk' },
-              { id: 'g-p3-t2-q', type: 'quiz',  label: '演習：黒本 自然言語処理・Transformer・生成AI 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p3-t2-q', type: 'quiz',  label: '演習：黒本 自然言語処理・Transformer・生成AI 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p3-t2-r', type: 'review', label: '復習：Self-Attention・Encoder-Decoder構造・BERTとGPTの違い・LLMの特徴', link: null, hint: 'BERTは双方向エンコーダ（穴埋め事前学習）、GPTは自己回帰デコーダ（次トークン予測）の違いを図解でまとめる。フラッシュカード「Attention機構」でも確認できます。', action: 'flashcard' },
             ]
           },
@@ -99,7 +99,7 @@ const CERTIFICATIONS = [
             tasks: [
               { id: 'g-p3-t3-v1', type: 'video', label: '動画：ディープラーニングの応用例（深層強化学習・DQN・モデル解釈性・軽量化）', link: 'https://youtu.be/KgfOa8YtPLk' },
               { id: 'g-p3-t3-v2', type: 'video', label: '動画：AIの社会実装に向けて（AIプロジェクトの進め方・データ収集・加工・運用評価）', link: 'https://youtu.be/xRN3W74Pf9w' },
-              { id: 'g-p3-t3-q', type: 'quiz',  label: '演習：黒本 DL応用・社会実装 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p3-t3-q', type: 'quiz',  label: '演習：黒本 DL応用・社会実装 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p3-t3-r', type: 'review', label: '復習：CRISP-DM 6ステップ・SHAP/LIMEの違い・プルーニング/量子化の目的', link: null, hint: 'CRISP-DM 6ステップを順番に説明できるようにする。SHAP=全体の貢献度、LIME=局所的近似、の違いをまとめる。' },
             ]
           },
@@ -114,7 +114,7 @@ const CERTIFICATIONS = [
             id: 'g-p4-t1', title: 'Week 9：AIに必要な数理・統計知識（第32〜33回）',
             tasks: [
               { id: 'g-p4-t1-v1', type: 'video', label: '動画：AIに必要な数理・統計知識（線形代数・確率分布・ベイズ推定・情報理論・エントロピー）', link: 'https://youtu.be/WnTIb5vPhQg' },
-              { id: 'g-p4-t1-q', type: 'quiz',  label: '演習：黒本 数理・統計知識 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p4-t1-q', type: 'quiz',  label: '演習：黒本 数理・統計知識 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p4-t1-r', type: 'review', label: '復習：正規分布・最尤推定・KLダイバージェンス・エントロピーの公式確認', link: null, hint: '各公式を紙に書いて再現できるか確認する。フラッシュカード「正規分布」「ベイズ推定」でも確認できます。', action: 'flashcard' },
             ]
           },
@@ -122,7 +122,7 @@ const CERTIFICATIONS = [
             id: 'g-p4-t2', title: 'Week 10：法律・倫理・クライシス・マネジメント（第31回）',
             tasks: [
               { id: 'g-p4-t2-v', type: 'video', label: '動画：AIに関する法律と契約（個人情報保護法・著作権法・特許法・不正競争防止法・独占禁止法）', link: 'https://youtu.be/MsHN_sPy7dU' },
-              { id: 'g-p4-t2-q', type: 'quiz',  label: '演習：黒本 法律・倫理 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p4-t2-q', type: 'quiz',  label: '演習：黒本 法律・倫理 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p4-t2-r', type: 'review', label: '復習：各法律のAIに関係するポイント・AI開発委託契約の要点整理', link: null, hint: '著作権法：学習用途の例外規定（第30条の4）、個人情報保護法：要配慮個人情報・匿名加工情報の違いをまとめる。' },
             ]
           },
@@ -131,7 +131,7 @@ const CERTIFICATIONS = [
             tasks: [
               { id: 'g-p4-t3-v1', type: 'video', label: '動画：AI倫理・AIガバナンス（OECD原則・各国ガイドライン・責任あるAI）', link: 'https://youtu.be/o_5mMhrWffs' },
               { id: 'g-p4-t3-v2', type: 'video', label: '動画：用語解説 総まとめ（G検定2026対応）', link: 'https://youtu.be/iNMZtrpTXpM' },
-              { id: 'g-p4-t3-q', type: 'quiz',  label: '演習：黒本 AIガバナンス・産業応用 分野の問題を解く', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p4-t3-q', type: 'quiz',  label: '演習：黒本 AIガバナンス・産業応用 分野の問題を解く', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p4-t3-r', type: 'review', label: '復習：OECD AI原則・Society 5.0・SDGsとAIの関係・2025年追加シラバス項目の確認', link: null, hint: 'OECD AI原則（包括性・透明性・説明責任・強靭性・安全性等）と国内ガイドラインとの対応をまとめる。フラッシュカードも活用。', action: 'flashcard' },
             ]
           },
@@ -145,8 +145,8 @@ const CERTIFICATIONS = [
           {
             id: 'g-p5-t1', title: 'Week 12：模擬試験・弱点補強・直前確認',
             tasks: [
-              { id: 'g-p5-t1-q1', type: 'quiz',  label: '演習：黒本 模擬試験（第1回）採点・分野別分析', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
-              { id: 'g-p5-t1-q2', type: 'quiz',  label: '演習：黒本 模擬試験（第2回）採点・弱点補強', link: 'https://drive.google.com/file/d/1OWSEeObgOZ5O64VNMLwvtLULrklvUNio/view' },
+              { id: 'g-p5-t1-q1', type: 'quiz',  label: '演習：黒本 模擬試験（第1回）採点・分野別分析', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
+              { id: 'g-p5-t1-q2', type: 'quiz',  label: '演習：黒本 模擬試験（第2回）採点・弱点補強', link: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783' },
               { id: 'g-p5-t1-r',  type: 'review', label: '直前：頻出用語最終確認・試験当日のID確認・時間配分シミュレーション', link: null, hint: '模擬試験で誤った問題を分類し、白本の該当章を読み直す。JDLA受験者ページでIDを確認。120分÷問題数で時間配分メモを作成する。', action: 'flashcard' },
             ]
           },
@@ -158,7 +158,7 @@ const CERTIFICATIONS = [
       { name: 'G検定 申込ページ', url: 'https://www.jdla.org/certificate/general/#entry', category: '公式' },
       { name: 'G検定 公式シラバス', url: 'https://www.jdla.org/certificate/general/#general_No03', category: '公式' },
       { name: '白本（公式テキスト）', url: null, local: true, category: '教材' },
-      { name: '黒本（問題集）', url: null, local: true, category: '教材' },
+      { name: '黒本（問題集）回答シート', url: 'https://docs.google.com/spreadsheets/d/1f9h4kaP6h1mCc8RbRtj3pZtRKa5gzX6g/edit?gid=48986783#gid=48986783', category: '教材' },
       { name: 'つくもちAI情報チャンネル（G検定講義シリーズ）', url: 'https://www.youtube.com/watch?v=z8N7Y_hztHY', category: '動画' },
     ]
   },
