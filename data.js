@@ -646,6 +646,53 @@ const FLASHCARDS = [
   { id: 'fc-s-38', cert: 'sc', certLabel: 'SC試験', term: 'セキュアコーディング', definition: 'バグや脆弱性を作り込まないためのコーディング原則。入力値検証・出力エスケープ・最小権限の原則・エラーハンドリングの適切な実装が基本。OWASP Top 10が主な脅威リスト。' },
   { id: 'fc-s-39', cert: 'sc', certLabel: 'SC試験', term: '個人情報保護法（改正）', definition: '個人情報の取得・利用・管理・提供を規制する日本の法律。2022年改正で①漏洩時の報告義務（個人情報保護委員会＋本人通知）②越境移転規制強化③不適正利用禁止が追加。' },
   { id: 'fc-s-40', cert: 'sc', certLabel: 'SC試験', term: 'ボットネット', definition: 'マルウェアに感染して攻撃者の指令（C2サーバ）に従い動作する複数の踏み台コンピュータ群。DDoS攻撃・スパム送信・クリック詐欺などに悪用される。' },
+
+  // AP試験カード（1〜40）
+  // ── テクノロジ系（20枚） ──
+  { id: 'fc-a-01', cert: 'ap', certLabel: 'AP試験', term: 'クロック周波数 / MIPS', definition: 'クロック周波数：CPUが1秒間に刻むクロック数（GHz単位）。MIPS（Millions of Instructions Per Second）：1秒間に実行できる命令数（百万単位）。CPUの処理性能指標。' },
+  { id: 'fc-a-02', cert: 'ap', certLabel: 'AP試験', term: 'キャッシュメモリ', definition: 'CPUと主記憶の速度差を埋めるための高速小容量メモリ。L1（最速）→L2→L3の階層構造。ヒット率が高いほど実効アクセス時間が短縮される。局所参照性（時間・空間）が効果の基盤。' },
+  { id: 'fc-a-03', cert: 'ap', certLabel: 'AP試験', term: '仮想記憶（ページング）', definition: 'ディスクを主記憶の延長として利用し、実際より大きな記憶空間を提供する仕組み。固定長のページ単位で管理。ページフォルト発生時にディスクからメモリにロード（スワッピング）。' },
+  { id: 'fc-a-04', cert: 'ap', certLabel: 'AP試験', term: 'スタック / キュー', definition: 'スタック：LIFO（後入れ先出し）構造。push/popで操作。関数呼び出し・再帰処理に利用。キュー：FIFO（先入れ先出し）構造。enqueue/dequeueで操作。印刷待ち・BFSなどに利用。' },
+  { id: 'fc-a-05', cert: 'ap', certLabel: 'AP試験', term: '二分探索（バイナリサーチ）', definition: 'ソート済み配列の中央値と比較し、探索範囲を半減させながら目的値を見つける手法。計算量O(log n)。線形探索O(n)より大幅に高速。前提として配列のソートが必要。' },
+  { id: 'fc-a-06', cert: 'ap', certLabel: 'AP試験', term: 'O記法（計算量・オーダー記法）', definition: 'アルゴリズムの時間/空間計算量を入力サイズnの関数で表す記法。O(1)＜O(log n)＜O(n)＜O(n log n)＜O(n²)＜O(2ⁿ)の順に遅くなる。最悪ケースの評価指標として使う。' },
+  { id: 'fc-a-07', cert: 'ap', certLabel: 'AP試験', term: 'デッドロック', definition: '複数プロセスがそれぞれ相手が保持する資源の解放を待ち続け、どのプロセスも進行できなくなる状態（循環待ち）。発生条件：相互排除・保持と待機・横取り不可・循環待ちの4つが同時成立。' },
+  { id: 'fc-a-08', cert: 'ap', certLabel: 'AP試験', term: 'CPUスケジューリング', definition: 'どのプロセスにCPUを割り当てるかを決める戦略。ラウンドロビン（時分割・公平）・優先度順（高優先が先）・最短ジョブ優先（SJF）・多段待ち行列などがある。スループット・応答時間の改善が目的。' },
+  { id: 'fc-a-09', cert: 'ap', certLabel: 'AP試験', term: 'RAID（0/1/5）', definition: 'RAID 0：ストライピング（分散書き込み、高速・冗長性なし）。RAID 1：ミラーリング（複製、信頼性高・容量効率50%）。RAID 5：分散パリティ（1台故障に耐性・容量効率高・読み取り速い）。' },
+  { id: 'fc-a-10', cert: 'ap', certLabel: 'AP試験', term: 'TCP / UDP', definition: 'TCP：コネクション型・信頼性保証（3ウェイハンドシェイク・再送制御・順序保証）。HTTP/FTP/SMTPで利用。UDP：コネクションレス・高速・信頼性なし。動画ストリーミング・DNS・VoIPで利用。' },
+  { id: 'fc-a-11', cert: 'ap', certLabel: 'AP試験', term: 'IPアドレス・サブネットマスク', definition: 'IPアドレスをネットワーク部とホスト部に分割するビットマスク。例：/24 = 255.255.255.0、ホスト数254台。CIDRで表記。サブネット分割でブロードキャストドメインを縮小できる。' },
+  { id: 'fc-a-12', cert: 'ap', certLabel: 'AP試験', term: 'DNS（Aレコード・MXレコード）', definition: 'ドメイン名をIPアドレスに変換する名前解決システム。Aレコード：ドメイン→IPv4アドレス。MXレコード：メールサーバ指定。再帰的・反復的問い合わせで権威DNSサーバまで問い合わせる。' },
+  { id: 'fc-a-13', cert: 'ap', certLabel: 'AP試験', term: '関係データベース・正規化', definition: '正規化：データの冗長性や更新異常を排除するDB設計手法。第1正規形（繰り返し排除）→第2正規形（部分関数従属排除）→第3正規形（推移的関数従属排除）の順に行う。' },
+  { id: 'fc-a-14', cert: 'ap', certLabel: 'AP試験', term: 'SQL（JOIN・GROUP BY）', definition: 'INNER JOIN：両テーブルに一致する行を結合。LEFT JOIN：左テーブル全行＋一致する右行。GROUP BY：列でグループ化しSUM/COUNT等の集計関数を適用。HAVINGでグループ条件を指定。' },
+  { id: 'fc-a-15', cert: 'ap', certLabel: 'AP試験', term: 'ACID特性（トランザクション）', definition: 'A（原子性）：全成功か全失敗。C（一貫性）：整合性のある状態を維持。I（独立性/隔離性）：並行トランザクションの干渉を防ぐ。D（永続性）：コミット後は障害でも消えない。DBの信頼性の基本。' },
+  { id: 'fc-a-16', cert: 'ap', certLabel: 'AP試験', term: '排他制御（ロック）', definition: '複数トランザクションの同時実行でデータの整合性を保つ仕組み。共有ロック（読み取り）と排他ロック（書き込み）がある。2相ロックプロトコルでデッドロックを防ぐ。楽観的ロックはバージョン管理で衝突検出。' },
+  { id: 'fc-a-17', cert: 'ap', certLabel: 'AP試験', term: 'ウォーターフォールモデル', definition: 'システム開発を要件定義→外部設計→内部設計→実装→テスト→運用の順に上流から下流へ一方向に進める手法。前工程の完成を前提とするため手戻りコストが大きく、要件変化に弱い。' },
+  { id: 'fc-a-18', cert: 'ap', certLabel: 'AP試験', term: 'アジャイル開発（スクラム）', definition: '短い反復（スプリント：1〜4週）で動くソフトウェアを継続的にリリースする開発手法。スクラムの役割：プロダクトオーナー・スクラムマスター・開発チーム。バックログで要求を管理。' },
+  { id: 'fc-a-19', cert: 'ap', certLabel: 'AP試験', term: 'テスト手法（ホワイト/ブラックボックス）', definition: 'ホワイトボックステスト：内部構造（コード）を把握した上でテスト。命令網羅・分岐網羅・条件網羅などのカバレッジ指標で測定。ブラックボックステスト：仕様から同値分割・境界値分析でテストケースを設計。' },
+  { id: 'fc-a-20', cert: 'ap', certLabel: 'AP試験', term: 'UML（クラス図・シーケンス図）', definition: 'クラス図：クラスの属性・操作・関連（集約・継承・依存等）を表す静的構造モデル。シーケンス図：オブジェクト間のメッセージ交換を時系列で表す動的モデル。AP午後では読み解き問題が頻出。' },
+
+  // ── マネジメント系（10枚） ──
+  { id: 'fc-a-21', cert: 'ap', certLabel: 'AP試験', term: 'WBS（作業分解構造）', definition: 'Work Breakdown Structure。プロジェクトの成果物や作業を階層的に分解した一覧・ツリー図。最小単位のワークパッケージに分解することでスケジュール・コスト・責任者の割り当てが可能になる。' },
+  { id: 'fc-a-22', cert: 'ap', certLabel: 'AP試験', term: 'EVM（アーンドバリュー分析）', definition: 'Earned Value Management。計画・実績・出来高を金額（またはポイント）で統一管理する進捗管理手法。SPI（スケジュール効率）= EV/PV、CPI（コスト効率）= EV/AC。SPI<1：遅延、CPI<1：コスト超過。' },
+  { id: 'fc-a-23', cert: 'ap', certLabel: 'AP試験', term: 'クリティカルパス法（CPM）', definition: 'プロジェクトの全タスクの依存関係をネットワーク図（PERT図）で表し、余裕ゼロ（最長経路）のクリティカルパスを特定する手法。クリティカルパス上の遅延がプロジェクト完了日を直接遅らせる。' },
+  { id: 'fc-a-24', cert: 'ap', certLabel: 'AP試験', term: 'SLA（サービスレベルアグリーメント）', definition: 'サービス提供者と顧客間でサービス品質（稼働率・応答時間・障害復旧時間等）の目標値を明記した合意書。KPIで測定し未達時のペナルティ・是正措置も規定。SLM（サービスレベル管理）で継続的に監視する。' },
+  { id: 'fc-a-25', cert: 'ap', certLabel: 'AP試験', term: 'ITIL（ITサービスマネジメント）', definition: 'ITサービス管理のベストプラクティス集（英国発）。サービスストラテジ・サービスデザイン・サービストランジション・サービスオペレーション・継続的改善の5フェーズ。ITSM基盤として広く採用。' },
+  { id: 'fc-a-26', cert: 'ap', certLabel: 'AP試験', term: 'システム監査', definition: '情報システムの信頼性・安全性・効率性を、独立した立場の監査人が評価し報告する活動。内部統制の有効性を確認する。システム監査人はシステムの構築・運用から独立していることが必要。' },
+  { id: 'fc-a-27', cert: 'ap', certLabel: 'AP試験', term: '稼働率・MTBF・MTTR', definition: 'MTBF（平均故障間隔）：障害から次の障害までの平均時間。MTTR（平均修復時間）：故障から復旧までの平均時間。稼働率 = MTBF÷(MTBF+MTTR)。直列システムは稼働率の積、並列は1から非稼働率の積を引いた値。' },
+  { id: 'fc-a-28', cert: 'ap', certLabel: 'AP試験', term: 'BCP / DR（事業継続計画）', definition: 'BCP（Business Continuity Plan）：大規模災害・障害が発生しても事業を継続するための計画。DR（Disaster Recovery）はBCPの一部でIT系の復旧手順に特化。BCM（管理プロセス）でPDCA運営する。' },
+  { id: 'fc-a-29', cert: 'ap', certLabel: 'AP試験', term: 'RTO / RPO', definition: 'RTO（Recovery Time Objective）：復旧目標時間。障害発生からサービス再開までの許容時間。RPO（Recovery Point Objective）：復旧目標時点。どの時点まで遡って復旧するかの許容量。バックアップ頻度の設計基準になる。' },
+  { id: 'fc-a-30', cert: 'ap', certLabel: 'AP試験', term: 'チェンジマネジメント（変更管理）', definition: 'ITILの変更管理プロセス。本番環境への変更を変更諮問委員会（CAB）が審査・承認・スケジューリングし、リスクを管理するプロセス。緊急変更（ECAB）も手順化されている。' },
+
+  // ── ストラテジ系（10枚） ──
+  { id: 'fc-a-31', cert: 'ap', certLabel: 'AP試験', term: 'SWOT分析', definition: '強み（Strengths）・弱み（Weaknesses）・機会（Opportunities）・脅威（Threats）を整理する経営戦略分析フレームワーク。内部環境（強み・弱み）と外部環境（機会・脅威）の組み合わせで戦略を導出する。' },
+  { id: 'fc-a-32', cert: 'ap', certLabel: 'AP試験', term: 'バランスト・スコアカード（BSC）', definition: '財務・顧客・内部プロセス・学習と成長の4視点でKPIを設定し、戦略を実行管理するフレームワーク（Kaplan & Norton）。財務指標だけでなく非財務指標も含めた統合的業績評価を行う。' },
+  { id: 'fc-a-33', cert: 'ap', certLabel: 'AP試験', term: 'CRM（顧客関係管理）', definition: 'Customer Relationship Management。顧客情報を一元管理し、個別の関係を強化して顧客満足度・LTV（生涯価値）を向上させる経営戦略・システム。購買履歴・問い合わせ履歴を統合分析する。' },
+  { id: 'fc-a-34', cert: 'ap', certLabel: 'AP試験', term: 'SCM（サプライチェーン管理）', definition: 'Supply Chain Management。調達→製造→物流→販売までの全工程を統合管理し、在庫最適化・コスト削減・リードタイム短縮を実現する手法。需要予測の誤差が川上に増幅するブルウィップ効果が課題。' },
+  { id: 'fc-a-35', cert: 'ap', certLabel: 'AP試験', term: 'ERP（統合基幹業務システム）', definition: 'Enterprise Resource Planning。会計・人事・生産・調達・販売などの基幹業務を単一DBで統合管理するシステム。SAP・Oracleが代表。リアルタイムで経営情報を一元把握できる反面、導入コスト・カスタマイズ費用が大きい。' },
+  { id: 'fc-a-36', cert: 'ap', certLabel: 'AP試験', term: 'KGI / KPI', definition: 'KGI（Key Goal Indicator）：最終的な目標達成度を測る指標（例：売上高）。KPI（Key Performance Indicator）：KGI達成に向けた中間プロセスの指標（例：問い合わせ件数・成約率）。BSCと組み合わせて戦略管理する。' },
+  { id: 'fc-a-37', cert: 'ap', certLabel: 'AP試験', term: 'ROI / 費用便益分析', definition: 'ROI（Return on Investment）= 利益÷投資額×100%。IT投資の経済的効果を測る基本指標。費用便益分析：投資の全コスト（初期＋運用）と全便益（コスト削減・売上増）を現在価値で比較し投資判断に使う。' },
+  { id: 'fc-a-38', cert: 'ap', certLabel: 'AP試験', term: 'システム化計画・要件定義', definition: 'システム化計画：経営目標に沿ってシステム化の目的・範囲・スケジュール・予算を定める。要件定義：利用者の業務要件を機能要件・非機能要件に整理してシステム要求仕様書を作成する工程。上流の品質がプロジェクト全体に影響する。' },
+  { id: 'fc-a-39', cert: 'ap', certLabel: 'AP試験', term: '著作権・産業財産権（IT関連）', definition: '著作権：ソフトウェアのプログラムは著作物として保護（登録不要・創作時に発生）。特許権：発明の保護（登録必要・20年）。商標権：ブランド名・ロゴ（10年更新可）。プログラムの著作権は原則として会社に帰属（職務著作）。' },
+  { id: 'fc-a-40', cert: 'ap', certLabel: 'AP試験', term: 'プライバシーマーク / ISMS認証', definition: 'プライバシーマーク：JIS Q 15001に基づく個人情報保護体制を第三者機関（JIPDEC）が認定する日本の制度。ISMS認証：ISO/IEC 27001に基づく情報セキュリティマネジメントシステムの国際認証。いずれも取引先・顧客へのセキュリティ信頼性の証明として活用される。' },
 ];
 
 // ロードマップ（全体タイムライン）

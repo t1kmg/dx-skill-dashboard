@@ -519,7 +519,8 @@ function fcRender() {
 
   const card = fcSession.deck[fcSession.index];
   const stats = state.flashcards[card.id] || { correct: 0, incorrect: 0 };
-  const certColor = card.cert === 'g-ken' ? 'var(--g-color)' : 'var(--sc-color)';
+  const certColorMap = { 'g-ken': 'var(--g-color)', 'ap': 'var(--ap-color)', 'sc': 'var(--sc-color)' };
+  const certColor = certColorMap[card.cert] || 'var(--accent)';
   const pct = Math.round(fcSession.index / fcSession.deck.length * 100);
 
   container.innerHTML = `
@@ -582,7 +583,7 @@ function glRender() {
   );
 
   // cert ごとに色
-  const certColors = { 'g-ken': 'var(--g-color)', 'sc': 'var(--sc-color)' };
+  const certColors = { 'g-ken': 'var(--g-color)', 'ap': 'var(--ap-color)', 'sc': 'var(--sc-color)' };
 
   count.textContent = `${cards.length} 件`;
 
