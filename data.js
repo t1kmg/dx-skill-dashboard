@@ -22,9 +22,9 @@ const CERTIFICATIONS = [
           {
             id: 'g-p1-t1', title: 'Week 1：人工知能とは・AIをめぐる動向（第1〜4回）【白本1周目完了済み✓】',
             tasks: [
-              { id: 'g-p1-t1-v1', type: 'video', label: '動画：第1回 人工知能の定義・研究の歴史・第1〜3次AIブーム', link: 'https://www.youtube.com/watch?v=z8N7Y_hztHY&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p1-t1-v2', type: 'video', label: '動画：第2〜3回 探索・推論・知識表現・エキスパートシステム', link: 'https://www.youtube.com/watch?v=9VCZmCKGjQk&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p1-t1-v3', type: 'video', label: '動画：第4回 人工知能分野の問題（フレーム問題・シンギュラリティ・記号接地問題等）', link: 'https://www.youtube.com/watch?v=-NmgV76s_Os&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p1-t1-v1', type: 'video', label: '動画：第1回 人工知能の定義・研究の歴史・第1〜3次AIブーム', link: 'https://youtu.be/z8N7Y_hztHY' },
+              { id: 'g-p1-t1-v2', type: 'video', label: '動画：第2〜3回 探索・推論・知識表現・エキスパートシステム', link: 'https://youtu.be/9VCZmCKGjQk' },
+              { id: 'g-p1-t1-v3', type: 'video', label: '動画：第4回 人工知能分野の問題（フレーム問題・シンギュラリティ・記号接地問題等）', link: 'https://youtu.be/-NmgV76s_Os' },
               { id: 'g-p1-t1-q', type: 'quiz',  label: '演習：黒本 AI概論・AIをめぐる動向 分野の問題を解く', link: null },
               { id: 'g-p1-t1-r', type: 'review', label: '復習：汎用AI・特化型AI・シンギュラリティ・フレーム問題・記号接地問題の定義確認', link: null, hint: '第1〜3次ブームの「きっかけ・主要技術・終焉理由」を時系列でまとめる。フラッシュカード「シンギュラリティ」でも確認できます。', action: 'flashcard' },
             ]
@@ -32,8 +32,8 @@ const CERTIFICATIONS = [
           {
             id: 'g-p1-t2', title: 'Week 2：機械学習の概要（第5〜7回）【白本1周目完了済み✓】',
             tasks: [
-              { id: 'g-p1-t2-v1', type: 'video', label: '動画：第5回 教師あり学習（回帰・分類・決定木・SVM・k近傍法）', link: 'https://www.youtube.com/watch?v=kBfl8Tr8VtA&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p1-t2-v2', type: 'video', label: '動画：第6〜7回 教師なし学習（k-means・PCA）・強化学習', link: 'https://www.youtube.com/watch?v=tVz4Waf3pQc&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p1-t2-v1', type: 'video', label: '動画：第5回 教師あり学習（回帰・分類・決定木・SVM・k近傍法）', link: 'https://youtu.be/kBfl8Tr8VtA' },
+              { id: 'g-p1-t2-v2', type: 'video', label: '動画：第6〜7回 教師なし学習（k-means・PCA）・強化学習', link: 'https://youtu.be/tVz4Waf3pQc' },
               { id: 'g-p1-t2-q', type: 'quiz',  label: '演習：黒本 機械学習（教師あり・なし・強化学習）分野の問題を解く', link: null },
               { id: 'g-p1-t2-r', type: 'review', label: '復習：決定木・SVM・k近傍法・k-means・PCAの特徴と用途の比較表作成', link: null, hint: '各アルゴリズムの「学習方法・得意なタスク・パラメータ調整ポイント」を表でまとめる。', action: 'flashcard' },
             ]
@@ -41,7 +41,7 @@ const CERTIFICATIONS = [
           {
             id: 'g-p1-t3', title: '⬅ Week 3：モデルの評価・過学習対策（第8回）【2周目 4/4〜4/11 今週開始】',
             tasks: [
-              { id: 'g-p1-t3-v', type: 'video', label: '動画：第8回 モデルの評価（混同行列・精度・適合率・再現率・F値・ROC曲線・交差検証・過学習）', link: 'https://www.youtube.com/watch?v=Mg7OxnjKtbE&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p1-t3-v', type: 'video', label: '動画：第8回 モデルの評価（混同行列・精度・適合率・再現率・F値・ROC曲線・交差検証・過学習）', link: 'https://youtu.be/Mg7OxnjKtbE' },
               { id: 'g-p1-t3-q', type: 'quiz',  label: '演習：黒本 モデルの評価・過学習対策 分野の問題を解く', link: null },
               { id: 'g-p1-t3-r', type: 'review', label: '復習：精度・適合率・再現率・F値の計算式と使い分け・AUCの意味', link: null, hint: '混同行列（TP/FP/FN/TN）から各指標を手計算で求められるよう練習する。フラッシュカード「F値」でも確認できます。', action: 'flashcard' },
             ]
@@ -56,9 +56,9 @@ const CERTIFICATIONS = [
           {
             id: 'g-p2-t1', title: 'Week 4：NN基礎・活性化関数・最適化・正則化（第9〜11回）',
             tasks: [
-              { id: 'g-p2-t1-v1', type: 'video', label: '動画：第9回 ニューラルネットワークとディープラーニング・誤差逆伝播法', link: 'https://www.youtube.com/watch?v=FbOONmCv2go&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p2-t1-v2', type: 'video', label: '動画：第10回 活性化関数・学習の最適化（SGD・モーメンタム・Adam等）', link: 'https://www.youtube.com/watch?v=JvWx9Td0nis&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p2-t1-v3', type: 'video', label: '動画：第11回 更なるテクニック（正則化・ドロップアウト・バッチ正規化・データ拡張）', link: 'https://www.youtube.com/watch?v=zIjvJO5NkO0&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p2-t1-v1', type: 'video', label: '動画：第9回 ニューラルネットワークとディープラーニング・誤差逆伝播法', link: 'https://youtu.be/FbOONmCv2go' },
+              { id: 'g-p2-t1-v2', type: 'video', label: '動画：第10回 活性化関数・学習の最適化（SGD・モーメンタム・Adam等）', link: 'https://youtu.be/JvWx9Td0nis' },
+              { id: 'g-p2-t1-v3', type: 'video', label: '動画：第11回 更なるテクニック（正則化・ドロップアウト・バッチ正規化・データ拡張）', link: 'https://youtu.be/zIjvJO5NkO0' },
               { id: 'g-p2-t1-q', type: 'quiz',  label: '演習：黒本 NN・活性化関数・最適化・正則化 分野の問題を解く', link: null },
               { id: 'g-p2-t1-r', type: 'review', label: '復習：ReLU・Sigmoid・Softmaxの使い分け・SGD/Adamの違い・ドロップアウト/L1/L2の目的', link: null, hint: '各活性化関数の値域・微分・用途・勾配消失との関係をまとめる。フラッシュカード「ReLU」でも確認できます。', action: 'flashcard' },
             ]
@@ -66,8 +66,8 @@ const CERTIFICATIONS = [
           {
             id: 'g-p2-t2', title: 'Week 5：CNN・深層生成モデル（第12〜14回）',
             tasks: [
-              { id: 'g-p2-t2-v1', type: 'video', label: '動画：第12〜13回 畳み込みニューラルネットワーク（CNN）①②（畳み込み・プーリング・スキップ結合）', link: 'https://www.youtube.com/watch?v=lUgt5GHcG3k&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p2-t2-v2', type: 'video', label: '動画：第14回 深層生成モデル（GAN・VAE・拡散モデル・オートエンコーダ）', link: 'https://www.youtube.com/watch?v=GAKY9JWxtaY&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p2-t2-v1', type: 'video', label: '動画：第12〜13回 畳み込みニューラルネットワーク（CNN）①②（畳み込み・プーリング・スキップ結合）', link: 'https://youtu.be/lUgt5GHcG3k' },
+              { id: 'g-p2-t2-v2', type: 'video', label: '動画：第14回 深層生成モデル（GAN・VAE・拡散モデル・オートエンコーダ）', link: 'https://youtu.be/GAKY9JWxtaY' },
               { id: 'g-p2-t2-q', type: 'quiz',  label: '演習：黒本 CNN・深層生成モデル 分野の問題を解く', link: null },
               { id: 'g-p2-t2-r', type: 'review', label: '復習：畳み込み・プーリング・スキップ結合の役割・GAN/VAE/拡散モデルの仕組みの違い', link: null, hint: 'GAN=敵対的学習、VAE=変分下界・潜在空間、拡散モデル=ノイズ除去の各生成原理を図解でまとめる。フラッシュカード「転移学習」でも確認できます。', action: 'flashcard' },
             ]
@@ -82,8 +82,8 @@ const CERTIFICATIONS = [
           {
             id: 'g-p3-t1', title: 'Week 6：画像認識応用・音声処理（第15〜18回）',
             tasks: [
-              { id: 'g-p3-t1-v1', type: 'video', label: '動画：第15〜17回 物体識別・物体検出・セグメンテーション（VGG・ResNet・YOLO・転移学習・ファインチューニング）', link: 'https://www.youtube.com/watch?v=2b797xvF2-I&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p3-t1-v2', type: 'video', label: '動画：第18回 音声認識・音声合成（TTS）', link: 'https://www.youtube.com/watch?v=LpGTqoyxawg&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p3-t1-v1', type: 'video', label: '動画：第15〜17回 物体識別・物体検出・セグメンテーション（VGG・ResNet・YOLO・転移学習・ファインチューニング）', link: 'https://youtu.be/2b797xvF2-I' },
+              { id: 'g-p3-t1-v2', type: 'video', label: '動画：第18回 音声認識・音声合成（TTS）', link: 'https://youtu.be/LpGTqoyxawg' },
               { id: 'g-p3-t1-q', type: 'quiz',  label: '演習：黒本 画像認識応用・音声処理 分野の問題を解く', link: null },
               { id: 'g-p3-t1-r', type: 'review', label: '復習：転移学習・ファインチューニングの違い・物体識別/検出/セグメンテーションの出力の違い', link: null, hint: '転移学習=事前学習済み重みを流用、ファインチューニング=一部の層を再学習。3タスクの出力の違いを図解でまとめる。', action: 'flashcard' },
             ]
@@ -91,8 +91,8 @@ const CERTIFICATIONS = [
           {
             id: 'g-p3-t2', title: 'Week 7：自然言語処理・Transformer・BERT・GPT（第19〜23回）',
             tasks: [
-              { id: 'g-p3-t2-v1', type: 'video', label: '動画：第19〜20回 自然言語処理①②（RNN・LSTM・Attention・Transformer）', link: 'https://www.youtube.com/watch?v=XTo4-iiF_Hw&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p3-t2-v2', type: 'video', label: '動画：第21〜23回 自然言語処理③④⑤（BERT・GPT・LLM・マルチモーダル）', link: 'https://www.youtube.com/watch?v=4m3iG7ynhZM&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p3-t2-v1', type: 'video', label: '動画：第19〜20回 自然言語処理①②（RNN・LSTM・Attention・Transformer）', link: 'https://youtu.be/XTo4-iiF_Hw' },
+              { id: 'g-p3-t2-v2', type: 'video', label: '動画：第21〜23回 自然言語処理③④⑤（BERT・GPT・LLM・マルチモーダル）', link: 'https://youtu.be/4m3iG7ynhZM' },
               { id: 'g-p3-t2-q', type: 'quiz',  label: '演習：黒本 自然言語処理・Transformer・生成AI 分野の問題を解く', link: null },
               { id: 'g-p3-t2-r', type: 'review', label: '復習：Self-Attention・Encoder-Decoder構造・BERTとGPTの違い・LLMの特徴', link: null, hint: 'BERTは双方向エンコーダ（穴埋め事前学習）、GPTは自己回帰デコーダ（次トークン予測）の違いを図解でまとめる。フラッシュカード「Attention機構」でも確認できます。', action: 'flashcard' },
             ]
@@ -100,9 +100,9 @@ const CERTIFICATIONS = [
           {
             id: 'g-p3-t3', title: 'Week 8：深層強化学習・モデル解釈性・軽量化・社会実装（第24〜30回）',
             tasks: [
-              { id: 'g-p3-t3-v1', type: 'video', label: '動画：第24〜25回 深層強化学習①②（DQN・方策勾配法）', link: 'https://www.youtube.com/watch?v=5N6TqoEfOh0&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p3-t3-v2', type: 'video', label: '動画：第26回 モデルの解釈性・軽量化・AIと社会（SHAP・LIME・プルーニング・量子化）', link: 'https://www.youtube.com/watch?v=dmTYJilMCgo&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p3-t3-v3', type: 'video', label: '動画：第27〜30回 AIプロジェクトの進め方・データ収集・加工・実装・運用・評価', link: 'https://www.youtube.com/watch?v=tsBgoQeCP6Y&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p3-t3-v1', type: 'video', label: '動画：第24〜25回 深層強化学習①②（DQN・方策勾配法）', link: 'https://youtu.be/5N6TqoEfOh0' },
+              { id: 'g-p3-t3-v2', type: 'video', label: '動画：第26回 モデルの解釈性・軽量化・AIと社会（SHAP・LIME・プルーニング・量子化）', link: 'https://youtu.be/dmTYJilMCgo' },
+              { id: 'g-p3-t3-v3', type: 'video', label: '動画：第27〜30回 AIプロジェクトの進め方・データ収集・加工・実装・運用・評価', link: 'https://youtu.be/tsBgoQeCP6Y' },
               { id: 'g-p3-t3-q', type: 'quiz',  label: '演習：黒本 DL応用・社会実装 分野の問題を解く', link: null },
               { id: 'g-p3-t3-r', type: 'review', label: '復習：CRISP-DM 6ステップ・SHAP/LIMEの違い・プルーニング/量子化の目的', link: null, hint: 'CRISP-DM 6ステップを順番に説明できるようにする。SHAP=全体の貢献度、LIME=局所的近似、の違いをまとめる。' },
             ]
@@ -117,8 +117,8 @@ const CERTIFICATIONS = [
           {
             id: 'g-p4-t1', title: 'Week 9：AIに必要な数理・統計知識（第32〜33回）',
             tasks: [
-              { id: 'g-p4-t1-v1', type: 'video', label: '動画：第32回 数理・統計①（線形代数・行列・ベクトル・固有値・確率分布・ベイズ推定）', link: 'https://www.youtube.com/watch?v=xfVv6jRrDDY&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p4-t1-v2', type: 'video', label: '動画：第33回 数理・統計②（情報理論・エントロピー・最適化の数学）', link: 'https://www.youtube.com/watch?v=5dlqC3FPm3Q&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p4-t1-v1', type: 'video', label: '動画：第32回 数理・統計①（線形代数・行列・ベクトル・固有値・確率分布・ベイズ推定）', link: 'https://youtu.be/xfVv6jRrDDY' },
+              { id: 'g-p4-t1-v2', type: 'video', label: '動画：第33回 数理・統計②（情報理論・エントロピー・最適化の数学）', link: 'https://youtu.be/5dlqC3FPm3Q' },
               { id: 'g-p4-t1-q', type: 'quiz',  label: '演習：黒本 数理・統計知識 分野の問題を解く', link: null },
               { id: 'g-p4-t1-r', type: 'review', label: '復習：正規分布・最尤推定・KLダイバージェンス・エントロピーの公式確認', link: null, hint: '各公式を紙に書いて再現できるか確認する。フラッシュカード「正規分布」「ベイズ推定」でも確認できます。', action: 'flashcard' },
             ]
@@ -126,7 +126,7 @@ const CERTIFICATIONS = [
           {
             id: 'g-p4-t2', title: 'Week 10：法律・倫理・クライシス・マネジメント（第31回）',
             tasks: [
-              { id: 'g-p4-t2-v', type: 'video', label: '動画：第31回 クライシス・マネジメント（個人情報保護法・著作権法・特許法・不正競争防止法・独占禁止法・AI倫理）', link: 'https://www.youtube.com/watch?v=2VKi9v24X9Y&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p4-t2-v', type: 'video', label: '動画：第31回 クライシス・マネジメント（個人情報保護法・著作権法・特許法・不正競争防止法・独占禁止法・AI倫理）', link: 'https://youtu.be/2VKi9v24X9Y' },
               { id: 'g-p4-t2-q', type: 'quiz',  label: '演習：黒本 法律・倫理 分野の問題を解く', link: null },
               { id: 'g-p4-t2-r', type: 'review', label: '復習：各法律のAIに関係するポイント・AI開発委託契約の要点整理', link: null, hint: '著作権法：学習用途の例外規定（第30条の4）、個人情報保護法：要配慮個人情報・匿名加工情報の違いをまとめる。' },
             ]
@@ -134,8 +134,8 @@ const CERTIFICATIONS = [
           {
             id: 'g-p4-t3', title: 'Week 11：最新シラバス要点・AIガバナンス（2025前編・後編）',
             tasks: [
-              { id: 'g-p4-t3-v1', type: 'video', label: '動画：【G検定2025】シラバス要点整理（前編）', link: 'https://www.youtube.com/watch?v=M3J8-KLHfYc&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
-              { id: 'g-p4-t3-v2', type: 'video', label: '動画：【G検定2025】シラバス要点整理（後編）', link: 'https://www.youtube.com/watch?v=aMsGHDw4R9s&list=PLTzA7a6XdKGZd4GH5Fjp3GY5yheWDTbNM' },
+              { id: 'g-p4-t3-v1', type: 'video', label: '動画：【G検定2025】シラバス要点整理（前編）', link: 'https://youtu.be/M3J8-KLHfYc' },
+              { id: 'g-p4-t3-v2', type: 'video', label: '動画：【G検定2025】シラバス要点整理（後編）', link: 'https://youtu.be/aMsGHDw4R9s' },
               { id: 'g-p4-t3-q', type: 'quiz',  label: '演習：黒本 AIガバナンス・産業応用 分野の問題を解く', link: null },
               { id: 'g-p4-t3-r', type: 'review', label: '復習：OECD AI原則・Society 5.0・SDGsとAIの関係・2025年追加シラバス項目の確認', link: null, hint: 'OECD AI原則（包括性・透明性・説明責任・強靭性・安全性等）と国内ガイドラインとの対応をまとめる。フラッシュカードも活用。', action: 'flashcard' },
             ]
