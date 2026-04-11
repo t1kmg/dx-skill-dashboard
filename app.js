@@ -568,16 +568,43 @@ window.fcAnswer = function(correct) {
 };
 
 // ===== #8 用語集 =====
-let glState = { cert: 'all', query: '' };
+let glState = { cert: 'all', query: '', phase: 'all' };
+
+// G検定 Phase定義（チップ表示用）
+const G_PHASES = [
+  { id: 'all',  label: '全Phase' },
+  { id: 'g-p1', label: 'Phase 1: AI概論・機械学習' },
+  { id: 'g-p2', label: 'Phase 2: DL基礎・CNN' },
+  { id: 'g-p3', label: 'Phase 3: DL応用・最新技術' },
+  { id: 'g-p4', label: 'Phase 4: 数理・統計・AIと社会' },
+];
+
+function glRenderPhaseFilter() {
+  const el = document.getElementById('gl-phase-filter');
+  if (!el) return;
+  if (glState.cert !== 'g-ken') {
+    el.style.display = 'none';
+    return;
+  }
+  el.style.display = 'flex';
+  el.innerHTML = G_PHASES.map(p =>
+    `<button class="fc-filter-btn${glState.phase === p.id ? ' active' : ''}" onclick="glSetPhase('${p.id}')">${p.label}</button>`
+  ).join('');
+}
 
 function glRender() {
   const list = document.getElementById('gl-list');
   const count = document.getElementById('gl-count');
   if (!list) return;
 
+  glRenderPhaseFilter();
+
   const q = glState.query.trim().toLowerCase();
   let cards = FLASHCARDS;
   if (glState.cert !== 'all') cards = cards.filter(c => c.cert === glState.cert);
+  if (glState.cert === 'g-ken' && glState.phase !== 'all') {
+    cards = cards.filter(c => c.phase === glState.phase);
+  }
   if (q) cards = cards.filter(c =>
     c.term.toLowerCase().includes(q) || c.definition.toLowerCase().includes(q)
   );
@@ -598,6 +625,14 @@ function glRender() {
     const mastered = stats.correct >= 3 && stats.correct > stats.incorrect;
     const masteredBadge = mastered ? `<span class="gl-mastered">✓ 習得済み</span>` : '';
 
+    // G検定のみ Phase・Chapter バッジを表示
+    const phaseBadge = card.phase
+      ? `<span class="gl-phase-tag" title="${card.phaseLabel}">${card.phaseLabel.split(':')[0]}</span>`
+      : '';
+    const chapterBadge = card.chapterLabel
+      ? `<span class="gl-chapter-tag" title="${card.chapterLabel}">${card.chapterLabel}</span>`
+      : '';
+
     // 検索ワードをハイライト
     function hl(text) {
       if (!q) return text;
@@ -610,6 +645,7 @@ function glRender() {
       <div class="gl-item-head">
         <span class="gl-cert-dot" style="background:${color}"></span>
         <span class="gl-cert-tag" style="color:${color}">${card.certLabel}</span>
+        ${phaseBadge}${chapterBadge}
         <span class="gl-term">${hl(card.term)}</span>
         ${masteredBadge}
         <span class="gl-chevron">▾</span>
@@ -645,6 +681,12 @@ window.glSetCert = function(btn) {
   document.querySelectorAll('[data-glfilter]').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   glState.cert = btn.dataset.glfilter;
+  glState.phase = 'all'; // 資格切り替え時はPhaseをリセット
+  glRender();
+};
+
+window.glSetPhase = function(phaseId) {
+  glState.phase = phaseId;
   glRender();
 };
 
